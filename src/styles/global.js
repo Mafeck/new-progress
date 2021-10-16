@@ -9,7 +9,8 @@ export default createGlobalStyle`
     }
 
     :root {
-
+        --darkBlue: #3B4977;
+        --white: #ffffff;
     }
 
     body {
