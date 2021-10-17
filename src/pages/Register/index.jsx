@@ -1,17 +1,33 @@
-import { Paper } from "@material-ui/core";
-import { Container, GrayButton, BlueButton, FormInput } from "./styles";
+import { Paper, TextField } from "@material-ui/core";
+import { Container, GrayButton, BlueButton } from "./styles";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { formSchema } from "../../components/Validation";
 import { useForm } from "react-hook-form";
+import axios from "axios";
+import { useHistory } from "react-router";
+import { formSchema } from "../../components/Validation";
 
 const Register = () => {
-  const { register, handleSubmit } = useForm({
+  const history = useHistory();
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
     resolver: yupResolver(formSchema),
   });
 
-  const registerUser = () => console.log("registerUser");
-  const onSubmitFunction = () => console.log("onSubmitFunction");
-  const goBack = () => console.log("goBack");
+  const handleForm = (data) => {
+    console.log("data", data);
+    axios
+      .post("https://kenzie-habits.herokuapp.com/users/", data)
+      .then((response) => {
+        console.log("response:", response);
+        history.push("/");
+      })
+      .catch((e) => console.log(e));
+  };
+  const goBack = () => history.push("/");
 
   return (
     <Container>
@@ -25,34 +41,94 @@ const Register = () => {
         }}
       >
         <h2>Cadastro</h2>
-        <form className="form" onSubmit={handleSubmit(onSubmitFunction)}>
-          <FormInput
-            className="user-data"
-            placeholder="Nome de usuário*"
+        <form onSubmit={handleSubmit(handleForm)}>
+          <TextField
+            id="outlined-username"
+            label="Nome de usuário*"
+            variant="outlined"
+            margin="normal"
+            size="small"
+            style={{
+              width: "100%",
+              marginBottom: "16px",
+              marginTop: "0px",
+              borderRadius: "5px",
+              border: "none",
+              background: "var(--gray)",
+              color: "var(--gray)",
+              opacity: " 0.7",
+            }}
             {...register("username")}
+            error={!!errors.username}
+            helperText={errors.username?.message}
           />
 
-          <FormInput
-            className="user-data"
-            placeholder="Endereço de Email*"
+          <TextField
+            id="outlined-email"
+            label="Endereço de Email*"
+            variant="outlined"
+            margin="normal"
+            size="small"
+            type="email"
+            style={{
+              width: "100%",
+              marginBottom: "16px",
+              marginTop: "0px",
+              borderRadius: "5px",
+              border: "none",
+              background: "var(--gray)",
+              color: "var(--gray)",
+              opacity: " 0.7",
+            }}
             {...register("email")}
+            error={!!errors.email}
+            helperText={errors.email?.message}
           />
-          <FormInput
-            className="password"
-            placeholder="Senha*"
+          <TextField
+            id="outlined-password"
+            label="Senha*"
+            variant="outlined"
+            margin="normal"
+            size="small"
+            type="password"
+            style={{
+              width: "100%",
+              marginBottom: "16px",
+              marginTop: "0px",
+              borderRadius: "5px",
+              border: "none",
+              background: "var(--gray)",
+              color: "var(--gray)",
+              opacity: " 0.7",
+            }}
             {...register("password")}
+            error={!!errors.password}
+            helperText={errors.password?.message}
           />
 
-          <FormInput
-            className="confirm-password"
-            placeholder="Confirme sua senha*"
-            {...register("confirmPassword")}
+          <TextField
+            id="outlined-confirmPassword"
+            label="Confirmar senha"
+            variant="outlined"
+            margin="normal"
+            size="small"
+            type="password"
+            style={{
+              width: "100%",
+              marginBottom: "16px",
+              marginTop: "0px",
+              borderRadius: "5px",
+              border: "none",
+              background: "var(--gray)",
+              color: "var(--gray)",
+              opacity: " 0.7",
+            }}
+            error={!!errors.confirmPassword}
+            helperText={errors.confirmPassword?.message}
           />
+          <BlueButton type="submit">Register</BlueButton>
+          <GrayButton onClick={goBack}>Back</GrayButton>
         </form>
-        <BlueButton type="submit" onClick={registerUser}>
-          Register
-        </BlueButton>
-        <GrayButton onClick={goBack}>Back</GrayButton>
       </Paper>
     </Container>
   );
