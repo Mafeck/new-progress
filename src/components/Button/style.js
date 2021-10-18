@@ -11,7 +11,8 @@ export const Container = styled.button`
     line-height: 19px;
     letter-spacing: -0.017em;
     margin: 15px 0px;
-    width: 295px;
+    width: max-content;
+    max-width: 100%;
     height: 50px;
     padding: 0px 30px;
     transition: 0.5s;
