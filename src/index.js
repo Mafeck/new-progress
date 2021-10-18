@@ -8,7 +8,7 @@ ReactDOM.render(
   <React.StrictMode>
     <Providers>
       <BrowserRouter>
-      <App />
+        <App />
       </BrowserRouter>
     </Providers>
   </React.StrictMode>,
