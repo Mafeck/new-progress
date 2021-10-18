@@ -22,7 +22,7 @@ export const Container = styled.div`
   p {
     color: #b2b2b2;
     font-size: 16px;
-    font-weight: 600;
+    font-weight: 500;
 
     span {
       color: var(--darkBlue);
@@ -71,6 +71,7 @@ export const DivTitle = styled.div`
 export const DivImg = styled.div`
   background: url(${img});
   background-size: 100%;
+  background-repeat: no-repeat;
   width: 90%;
-  height: 35.1%;
+  height: 36%;
 `;
