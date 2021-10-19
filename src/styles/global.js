@@ -7,8 +7,10 @@ export default createGlobalStyle`
         box-sizing: border-box;
         outline: 0;
     }
-
     :root {
+        --darkBlue: #3B4977;
+        --white: #ffffff;
+        --gray: #F5F5F5;
         --color-primary: #3B4977;
         --color-secondary: #3B7773;
         --color-tertiary: #968FE9;
@@ -19,25 +21,20 @@ export default createGlobalStyle`
         --grey-2: #F5F5F5;
         --border-width-input-button: 2px;
     }
-
     body {
         /* background: ; */
         /* font-family: ; */
     }
-
     border-list-style, input, button {
         /* font-family: ; */
         /* font-size: ; */
     }
-
     h1, h2, h3, h4, h5, h6 {
         /* font-family: ; */
     }
-
     button {
         cursor: pointer;
     }
-
     a {
         /* color: ; */
         text-decoration: none;
