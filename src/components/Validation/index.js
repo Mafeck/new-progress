@@ -5,18 +5,12 @@ export const formSchema = yup.object().shape({
     .string()
     .required("Usuário obrigatório.")
     .matches(/^[a-zA-Z0-9]+$/, "Usuário inválido"),
-  email: yup
-    .string()
-    .required("Email obrigatório")
-    .email("Email invalido.")
-    .matches(
-      /^(([^<>()[\],;:\s@"]+(\.[^<>()[\],;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/i
-    ),
+  email: yup.string().required("Email obrigatório").email("Email invalido."),
   password: yup
     .string()
     .required("Senha obrigatória.")
     .matches(
-      /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[$*&@#])(?:([0-9a-zA-Z$*&@#])(?!\1)){8,}$/,
+      "^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$",
       "A senha deve conter no mínimo 8 caracteres, uma letra maiúscula, uma minuscula, um número e um caracter especial."
     ),
   confirmPassword: yup
