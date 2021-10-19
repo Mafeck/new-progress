@@ -10,8 +10,6 @@ export default createGlobalStyle`
     :root {
         --darkBlue: #3B4977;
         --white: #ffffff;
-<<<<<<< HEAD
-=======
         --gray: #F5F5F5;
         --color-primary: #3B4977;
         --color-secondary: #3B7773;
@@ -22,7 +20,6 @@ export default createGlobalStyle`
         --grey-1: #CCCCCC;
         --grey-2: #F5F5F5;
         --border-width-input-button: 2px;
->>>>>>> e45bfff8779e3cdfd1ae9435178813cecddee972
     }
     body {
         /* background: ; */
