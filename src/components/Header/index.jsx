@@ -46,7 +46,7 @@ const Header = () => {
   return (
     <Container>
       <Perfil>
-        <h5>{user.username || "Felipe Matheus"}</h5>
+        <h5>{user.username}</h5>
         <div className="perfil" onClick={handlePerfil}>
           <IoPersonCircle />
         </div>
