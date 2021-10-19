@@ -5,18 +5,7 @@ export const formSchema = yup.object().shape({
     .string()
     .required("Usuário obrigatório.")
     .matches(/^[a-zA-Z0-9]+$/, "Usuário inválido"),
-<<<<<<< HEAD
   email: yup.string().required("Email obrigatório").email("Email invalido."),
-=======
-
-  email: yup
-    .string()
-    .required("Email obrigatório")
-    .email("Email invalido.")
-    .matches(
-      /^(([^<>()[\],;:\s@"]+(\.[^<>()[\],;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/i
-    ),
->>>>>>> feature/login
   password: yup
     .string()
     .required("Senha obrigatória.")
