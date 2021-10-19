@@ -29,15 +29,3 @@ export const BlueButton = styled(GrayButton)`
   color: var(--white);
   background-color: var(--darkBlue);
 `;
-
-// export const FormInput = styled.input`
-//   width: 100%;
-//   margin-bottom: 16px;
-//   height: 50px;
-//   border-radius: 5px;
-//   border: none;
-//   background: var(--gray);
-//   padding-left: 12px;
-//   color: var(--gray);
-//   opacity: 0.7;
-// `;

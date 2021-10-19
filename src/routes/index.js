@@ -1,21 +1,22 @@
 import { Switch, Route } from "react-router-dom";
-import Dashboard from "../pages/DashBoard";
+import Group from "../pages/Group";
 import Groups from "../pages/Groups";
 import Habits from "../pages/Habits";
-// import Home from "../pages/Home";
+import Home from "../pages/Home";
 import Register from "../pages/Register";
+import Login from "../pages/Login";
 
 const Routes = () => {
   return (
     <Switch>
-      {/* <Route exact path="/">
+      <Route exact path="/">
         <Home />
-      </Route> */}
+      </Route>
       <Route path="/register">
         <Register />
       </Route>
       <Route path="/login">
-        <Register />
+        <Login />
       </Route>
       <Route path="/habits">
         <Habits />
@@ -23,8 +24,8 @@ const Routes = () => {
       <Route path="/groups">
         <Groups />
       </Route>
-      <Route path="/dashboard">
-        <Dashboard />
+      <Route path="/groups/group">
+        <Group />
       </Route>
     </Switch>
   );

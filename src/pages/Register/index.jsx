@@ -1,10 +1,12 @@
-import { Paper, TextField } from "@material-ui/core";
-import { Container, GrayButton, BlueButton } from "./styles";
+import { Paper } from "@material-ui/core";
+import { Container } from "./styles";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
-import axios from "axios";
+import api from "../../services/api";
 import { useHistory } from "react-router";
 import { formSchema } from "../../components/Validation";
+import { Button } from "../../components/Button";
+import { Input } from "../../components/Input";
 
 const Register = () => {
   const history = useHistory();
@@ -19,11 +21,10 @@ const Register = () => {
 
   const handleForm = (data) => {
     console.log("data", data);
-    axios
-      .post("https://kenzie-habits.herokuapp.com/users/", data)
+    api
+      .post("/users/", data)
       .then((response) => {
-        console.log("response:", response);
-        history.push("/");
+        history.push("/login");
       })
       .catch((e) => console.log(e));
   };
@@ -42,92 +43,39 @@ const Register = () => {
       >
         <h2>Cadastro</h2>
         <form onSubmit={handleSubmit(handleForm)}>
-          <TextField
-            id="outlined-username"
-            label="Nome de usuário*"
-            variant="outlined"
-            margin="normal"
-            size="small"
-            style={{
-              width: "100%",
-              marginBottom: "16px",
-              marginTop: "0px",
-              borderRadius: "5px",
-              border: "none",
-              background: "var(--gray)",
-              color: "var(--gray)",
-              opacity: " 0.7",
-            }}
+          <Input
+            label={"Nome de usuário*"}
+            type="text"
             {...register("username")}
             error={!!errors.username}
             helperText={errors.username?.message}
           />
 
-          <TextField
-            id="outlined-email"
-            label="Endereço de Email*"
-            variant="outlined"
-            margin="normal"
-            size="small"
+          <Input
+            label={"Endereço de Email*"}
             type="email"
-            style={{
-              width: "100%",
-              marginBottom: "16px",
-              marginTop: "0px",
-              borderRadius: "5px",
-              border: "none",
-              background: "var(--gray)",
-              color: "var(--gray)",
-              opacity: " 0.7",
-            }}
             {...register("email")}
             error={!!errors.email}
             helperText={errors.email?.message}
           />
-          <TextField
-            id="outlined-password"
-            label="Senha*"
-            variant="outlined"
-            margin="normal"
-            size="small"
+          <Input
+            label={"Senha*"}
             type="password"
-            style={{
-              width: "100%",
-              marginBottom: "16px",
-              marginTop: "0px",
-              borderRadius: "5px",
-              border: "none",
-              background: "var(--gray)",
-              color: "var(--gray)",
-              opacity: " 0.7",
-            }}
             {...register("password")}
             error={!!errors.password}
             helperText={errors.password?.message}
           />
 
-          <TextField
-            id="outlined-confirmPassword"
-            label="Confirmar senha"
-            variant="outlined"
-            margin="normal"
-            size="small"
+          <Input
+            label={"Confirmar senha"}
             type="password"
-            style={{
-              width: "100%",
-              marginBottom: "16px",
-              marginTop: "0px",
-              borderRadius: "5px",
-              border: "none",
-              background: "var(--gray)",
-              color: "var(--gray)",
-              opacity: " 0.7",
-            }}
             error={!!errors.confirmPassword}
             helperText={errors.confirmPassword?.message}
           />
-          <BlueButton type="submit">Register</BlueButton>
-          <GrayButton onClick={goBack}>Back</GrayButton>
+          <Button type="submit">Register</Button>
+          <Button whiteSchema={true} onClick={goBack}>
+            Back
+          </Button>
         </form>
       </Paper>
     </Container>
