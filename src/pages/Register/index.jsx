@@ -19,8 +19,8 @@ const Register = () => {
     resolver: yupResolver(formSchema),
   });
 
-  const handleForm = (data) => {
-    console.log("data", data);
+  const handleForm = ({ username, email, password }) => {
+    const data = { username, email, password };
     api
       .post("/users/", data)
       .then((response) => {
@@ -46,7 +46,8 @@ const Register = () => {
           <Input
             label={"Nome de usuário*"}
             type="text"
-            {...register("username")}
+            name="username"
+            register={register}
             error={!!errors.username}
             helperText={errors.username?.message}
           />
@@ -54,20 +55,24 @@ const Register = () => {
           <Input
             label={"Endereço de Email*"}
             type="email"
-            {...register("email")}
+            name="email"
+            register={register}
             error={!!errors.email}
             helperText={errors.email?.message}
           />
           <Input
             label={"Senha*"}
             type="password"
-            {...register("password")}
+            name="password"
+            register={register}
             error={!!errors.password}
             helperText={errors.password?.message}
           />
 
           <Input
             label={"Confirmar senha"}
+            name="confirmPassword"
+            register={register}
             type="password"
             error={!!errors.confirmPassword}
             helperText={errors.confirmPassword?.message}

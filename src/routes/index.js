@@ -2,22 +2,22 @@ import { Switch, Route } from "react-router-dom";
 import Group from "../pages/Group";
 import Groups from "../pages/Groups";
 import Habits from "../pages/Habits";
-import Home from "../pages/Home";
+// import Home from "../pages/Home";
 import Register from "../pages/Register";
-import Login from "../pages/Login";
+// import Login from "../pages/Login";
 
 const Routes = () => {
   return (
     <Switch>
-      <Route exact path="/">
+      {/* <Route exact path="/">
         <Home />
-      </Route>
+      </Route> */}
       <Route path="/register">
         <Register />
       </Route>
-      <Route path="/login">
+      {/* <Route path="/login">
         <Login />
-      </Route>
+      </Route> */}
       <Route path="/habits">
         <Habits />
       </Route>
