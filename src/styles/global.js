@@ -6,11 +6,9 @@ export default createGlobalStyle`
         padding: 0;
         box-sizing: border-box;
         outline: 0;
+        font-family: 'Inter', sans-serif;
     }
     :root {
-        --darkBlue: #3B4977;
-        --white: #ffffff;
-        --gray: #F5F5F5;
         --color-primary: #3B4977;
         --color-secondary: #3B7773;
         --color-tertiary: #968FE9;

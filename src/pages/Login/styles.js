@@ -8,23 +8,29 @@ export const Container = styled.div`
   justify-content: space-around;
   flex-direction: column;
   h2 {
-    color: var(--darkBlue);
-    margin-bottom: 28px;
+    color: var(--color-title);
+    margin: 15px 0px;
+    text-align: center;
   }
 `;
 
-export const GrayButton = styled.button`
-  color: var(--darkBlue);
-  font-size: 18px;
-  font-weight: bold;
-  width: 100%;
-  height: 50px;
-  border: 2px solid var(--darkBlue);
-  border-radius: 5px;
-  margin-top: 12px;
-`;
+export const ButtonBox = styled.div`
+  display: flex;
+  flex-direction: column;
 
-export const BlueButton = styled(GrayButton)`
-  color: var(--white);
-  background-color: var(--darkBlue);
+  button {
+    width: 100%;
+  }
+
+  span {
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 15px;
+    font-style: normal;
+    letter-spacing: -0.017em;
+    color: var(--color-text);
+    text-align: center;
+
+
+  }
 `;
