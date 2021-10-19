@@ -1,5 +1,6 @@
 import { Container, DivTitle, DivImg } from "./styles";
 import { Link, useHistory } from "react-router-dom";
+import { Button } from "../../components/Button/index";
 
 const Home = () => {
   const history = useHistory();
@@ -19,7 +20,7 @@ const Home = () => {
 
       <DivImg />
       <div className="sectionRedirect">
-        <button onClick={handleStarNow}>Start now</button>
+        <Button whiteSchema={true} onClick={handleStarNow}>Start now</Button>
         <p>
           Já tem uma conta?
           <Link to="/login">
