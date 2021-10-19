@@ -1,5 +1,5 @@
 const Habits = () => {
-  return <></>;
+  return <div></div>;
 };
 
 export default Habits;

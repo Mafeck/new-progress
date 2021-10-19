@@ -4,7 +4,7 @@ import Groups from "../pages/Groups";
 import Habits from "../pages/Habits";
 // import Home from "../pages/Home";
 import Register from "../pages/Register";
-// import Login from "../pages/Login";
+import Login from "../pages/Login";
 
 const Routes = () => {
   return (
@@ -12,19 +12,19 @@ const Routes = () => {
       {/* <Route exact path="/">
         <Home />
       </Route> */}
-      <Route path="/register">
+      <Route exact path="/register">
         <Register />
       </Route>
-      {/* <Route path="/login">
+      <Route exact path="/login">
         <Login />
-      </Route> */}
-      <Route path="/habits">
+      </Route>
+      <Route exact path="/habits">
         <Habits />
       </Route>
-      <Route path="/groups">
+      <Route exact path="/groups">
         <Groups />
       </Route>
-      <Route path="/groups/group">
+      <Route exact path="/groups/group">
         <Group />
       </Route>
     </Switch>
