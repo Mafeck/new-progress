@@ -4,11 +4,12 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import api from "../../services/api";
 import { useHistory } from "react-router";
-import { formSchema } from "../../components/Validation";
+import { loginFormSchema } from "../../components/Validation";
 import { Button } from "../../components/Button";
 import { Input } from "../../components/Input";
 import { useContext } from "react";
 import { UserContext } from "../../Providers/User";
+import { Box } from "@material-ui/system";
 
 const Login = () => {
   const history = useHistory();
@@ -19,14 +20,15 @@ const Login = () => {
     handleSubmit,
     formState: { errors },
   } = useForm({
-    resolver: yupResolver(formSchema),
+    resolver: yupResolver(loginFormSchema),
   });
 
   const onSubmitFunction = (data) => {
     api
       .post("/sessions/", data)
       .then((response) => {
-       return history.push("/habits");
+        console.log(response);
+        return history.push("/habits");
       })
       .catch((e) => console.log(e));
   };
@@ -45,8 +47,7 @@ const Login = () => {
         }}
       >
         <h2>Login</h2>
-        <form onSubmit={handleSubmit(onSubmitFunction)}>
-          
+        <Box component="form" onSubmit={handleSubmit(onSubmitFunction)}>
           <Input
             label={"Nome de usuário*"}
             type="text"
@@ -60,18 +61,18 @@ const Login = () => {
             label={"Senha*"}
             type="password"
             register={register}
-            name='password'
+            name="password"
             error={!!errors.password}
             helperText={errors.password?.message}
           />
-          <Button type='submit'>Entrar</Button>
+          <Button type="submit">Entrar</Button>
           {/* <ButtonBox> */}
           {/* </ButtonBox> */}
-        </form>
-            <span>Não tem uma conta?</span>
-            <Button whiteSchema={true} onClick={() => handleClick()}>
-              Registrar
-            </Button>
+        </Box>
+        <span>Não tem uma conta?</span>
+        <Button whiteSchema={true} onClick={() => handleClick()}>
+          Registrar
+        </Button>
       </Paper>
     </Container>
   );
