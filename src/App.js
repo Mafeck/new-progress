@@ -4,6 +4,7 @@ import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Box } from "@material-ui/core";
+import { Button } from "./components/Button";
 
 const regexPassword =
   /^((?=.*[?!@#$%^&*()\-_=+{};:,<.>]){1})(?=.*\d)((?=.*[a-z]){1})((?=.*[A-Z]){1}).*$/;
@@ -112,7 +113,7 @@ function App() {
         error={!!errors.course_module}
         helperText={errors.course_module?.message}
       ></Input>
-      <button type="submit">click aqui</button>
+      <Button type="submit">click aqui</Button>
       <GlobalStyled />
     </Box>
   );
