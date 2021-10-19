@@ -7,6 +7,7 @@ import { useHistory } from "react-router";
 import { formSchema } from "../../components/Validation";
 import { Button } from "../../components/Button";
 import { Input } from "../../components/Input";
+import { PlusButton } from "../../components/PlusButton";
 
 const Register = () => {
   const history = useHistory();
@@ -82,6 +83,7 @@ const Register = () => {
             Back
           </Button>
         </form>
+        <PlusButton greenSchema={true} />
       </Paper>
     </Container>
   );
