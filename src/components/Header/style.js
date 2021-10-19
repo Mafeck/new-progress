@@ -2,8 +2,8 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   background: #ededed;
-  width: 100vw;
-  height: 10vh;
+  width: 100%;
+  height: 10%;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -100,11 +100,13 @@ export const EditModal = styled.div`
   }
 
   input {
+    font-size: 20px;
     width: 295px;
     height: 50px;
     margin-top: 10px;
     border: 2px solid #3b4977;
     border-radius: 5px;
+    padding-left: 15px;
   }
 
   button {
