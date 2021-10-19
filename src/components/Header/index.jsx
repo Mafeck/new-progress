@@ -7,10 +7,12 @@ import { FaRegEdit } from "react-icons/fa";
 import { AiOutlineClose } from "react-icons/ai";
 import { UserContext } from "../../Providers/User";
 import { Button } from "../../components/Button/index";
+import jwtDecode from "jwt-decode";
 import api from "../../services/api";
 
 const Header = () => {
-  const { user } = useContext(UserContext);
+  const { user, token } = useContext(UserContext);
+  // const [tokenDecode] = useState(jwtDecode(token));
   const [render, setRender] = useState(false);
   const [renderEditModal, setRenderEditModal] = useState(false);
   const [username, setUsername] = useState(user.username);
@@ -35,7 +37,7 @@ const Header = () => {
   };
 
   // const handleSaveAlteration = () => {
-  //   api.patch(`users/${}`, data).then().catch((error) => console.log(error));
+  //   api.patch(`users/${tokenDecode.user_id}`, data).then().catch((error) => console.log(error));
   // };
 
   const handleLogout = () => {
@@ -96,7 +98,7 @@ const Header = () => {
                 value={`${username}`}
                 onChange={(evt) => setUsername(evt.target.value)}
               />
-              <Button>Salvar Alteração</Button>
+              <Button whiteSchema={true}>Salvar Alteração</Button>
             </main>
           </div>
         </Modal>

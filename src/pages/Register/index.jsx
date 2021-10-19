@@ -56,7 +56,6 @@ const Register = () => {
             error={!!errors.username}
             helperText={errors.username?.message}
           />
-
           <Input
             label={"Endereço de Email*"}
             type="email"

@@ -17,8 +17,8 @@ export default createGlobalStyle`
         --color-quaternary: #E98FD5;
         --color-title: #111111;
         --color-text: #878787;
-        --grey-1: #CCCCCC;
-        --grey-2: #F5F5F5;
+        --gray-1: #CCCCCC;
+        --gray-2: #F5F5F5;
         --border-width-input-button: 2px;
     }
     body {

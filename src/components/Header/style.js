@@ -140,16 +140,9 @@ export const Modal = styled.div`
   }
 
   button {
-    background: #f5f5f5;
-    color: #cccccc;
-    font-size: 16px;
-    font-weight: 400;
+    color: var(--gray-1);
     width: 100%;
-    height: 50px;
     margin-top: 10px;
     border: none;
-    border-radius: 5px;
-    /* cursor: not-allowed; */
-    // mudar o a cor e o estado do botão, quando o usuário escrever algo no input
   }
 `;
