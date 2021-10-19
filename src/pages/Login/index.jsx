@@ -68,14 +68,14 @@ const Login = () => {
             error={!!errors.password}
             helperText={errors.password?.message}
           />
-          <Button type="submit">Entrar</Button>
-          {/* <ButtonBox> */}
-          {/* </ButtonBox> */}
+          <ButtonBox>
+            <Button type="submit">Entrar</Button>
+            <span>Não tem uma conta?</span>
+            <Button whiteSchema={true} onClick={() => handleClick()}>
+              Registrar
+            </Button>
+          </ButtonBox>
         </Box>
-        <span>Não tem uma conta?</span>
-        <Button whiteSchema={true} onClick={() => handleClick()}>
-          Registrar
-        </Button>
       </Paper>
     </Container>
   );
