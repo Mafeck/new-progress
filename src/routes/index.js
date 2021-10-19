@@ -2,16 +2,16 @@ import { Switch, Route } from "react-router-dom";
 import Group from "../pages/Group";
 import Groups from "../pages/Groups";
 import Habits from "../pages/Habits";
-// import Home from "../pages/Home";
+import Home from "../pages/Home";
 import Register from "../pages/Register";
 import Login from "../pages/Login";
 
 const Routes = () => {
   return (
     <Switch>
-      {/* <Route exact path="/">
+      <Route exact path="/">
         <Home />
-      </Route> */}
+      </Route>
       <Route exact path="/register">
         <Register />
       </Route>

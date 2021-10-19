@@ -20,10 +20,15 @@ const Register = () => {
   });
 
   const handleForm = ({ username, email, password }) => {
-    const data = { username, email, password };
+    const data = {
+      username,
+      email,
+      password,
+    };
+
     api
       .post("/users/", data)
-      .then((response) => {
+      .then(() => {
         history.push("/login");
       })
       .catch((e) => console.log(e));
@@ -68,12 +73,11 @@ const Register = () => {
             error={!!errors.password}
             helperText={errors.password?.message}
           />
-
           <Input
             label={"Confirmar senha"}
             name="confirmPassword"
+            type="confirmPassword"
             register={register}
-            type="password"
             error={!!errors.confirmPassword}
             helperText={errors.confirmPassword?.message}
           />
