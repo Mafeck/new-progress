@@ -1,4 +1,4 @@
-import { Container, Perfil, ContainerPerfil, EditModal } from "./style";
+import { Container, Perfil, ContainerPerfil, Modal } from "./style";
 import { IoPersonCircle } from "react-icons/io5";
 import { useContext, useState } from "react";
 import { useHistory } from "react-router";
@@ -6,6 +6,7 @@ import { FiLogOut } from "react-icons/fi";
 import { FaRegEdit } from "react-icons/fa";
 import { AiOutlineClose } from "react-icons/ai";
 import { UserContext } from "../../Providers/User";
+import { Button } from "../../components/Button/index";
 import api from "../../services/api";
 
 const Header = () => {
@@ -75,20 +76,30 @@ const Header = () => {
         </ContainerPerfil>
       )}
       {renderEditModal && (
-        <EditModal>
-          <div className="divTitle">
-            <h3>Editar Perfil</h3>
-            <AiOutlineClose
-              color="#FFFFFF"
-              onClick={() => setRenderEditModal(false)}
-            />
+        <Modal
+          id="modalContent"
+          onClick={(evt) =>
+            evt.target.id === "modalContent" && setRenderEditModal(false)
+          }
+        >
+          <div className="modalContent">
+            <header className="modalHeader">
+              <h3>Editar Perfil</h3>
+              <AiOutlineClose
+                color="#FFFFFF"
+                onClick={() => setRenderEditModal(false)}
+              />
+            </header>
+            <main className="modalBody">
+              <input
+                type="text"
+                value={`${username}`}
+                onChange={(evt) => setUsername(evt.target.value)}
+              />
+              <Button>Salvar Alteração</Button>
+            </main>
           </div>
-          <input
-            type="text"
-            onChange={(evt) => setUsername(evt.target.value)}
-          />
-          <button>Salvar Alteração</button>
-        </EditModal>
+        </Modal>
       )}
     </Container>
   );

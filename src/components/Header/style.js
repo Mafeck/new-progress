@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 
 export const Container = styled.div`
   background: #ededed;
@@ -77,17 +77,47 @@ export const ContainerPerfil = styled.div`
   }
 `;
 
-export const EditModal = styled.div`
-  width: 90%;
-  height: 180px;
-  display: flex;
-  position: absolute;
-  flex-direction: column;
-  align-items: center;
-  top: 50px;
-  margin: 0 auto;
+export const ModalEffect = keyframes`
+  0%{
+    opacity: 0;
+    transform: translateY(-20%);
+  }
 
-  .divTitle {
+  100%{
+    opacity: 1;
+    transform: translateY(0%);
+  }
+`;
+
+export const Modal = styled.div`
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  position: fixed;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1;
+
+  .modalContent {
+    width: 95%;
+    background: #ffffff;
+    border-radius: 5px;
+    animation: ${ModalEffect} 0.6s ease;
+  }
+
+  .modalBody {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 10px;
+  }
+
+  .modalHeader {
     background: #3b7773;
     color: white;
     width: 100%;
@@ -101,7 +131,7 @@ export const EditModal = styled.div`
 
   input {
     font-size: 20px;
-    width: 295px;
+    width: 100%;
     height: 50px;
     margin-top: 10px;
     border: 2px solid #3b4977;
@@ -114,7 +144,7 @@ export const EditModal = styled.div`
     color: #cccccc;
     font-size: 16px;
     font-weight: 400;
-    width: 295px;
+    width: 100%;
     height: 50px;
     margin-top: 10px;
     border: none;

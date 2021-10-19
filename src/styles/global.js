@@ -23,7 +23,7 @@ export default createGlobalStyle`
     }
     body {
         /* background: ; */
-        /* font-family: ; */
+        font-family: 'Inter', sans-serif;
     }
     border-list-style, input, button {
         /* font-family: ; */
