@@ -7,13 +7,13 @@ import { useHistory } from "react-router";
 import { loginFormSchema } from "../../components/Validation";
 import { Button } from "../../components/Button";
 import { Input } from "../../components/Input";
-import { useContext } from "react";
-import { UserContext } from "../../Providers/User";
 import { Box } from "@material-ui/system";
+import { useContext } from "react";
+import { UserContext } from '../../Providers/User';
 
 const Login = () => {
   const history = useHistory();
-  const { token, setToken, user, setUser } = useContext(UserContext);
+  const { setUser } = useContext(UserContext);
 
   const {
     register,
@@ -24,10 +24,13 @@ const Login = () => {
   });
 
   const onSubmitFunction = (data) => {
+    localStorage.setItem('@newProgress:user', JSON.stringify(data));
+    setUser(data);
     api
       .post("/sessions/", data)
       .then((response) => {
-        console.log(response);
+        const token = response.data.access;
+        localStorage.setItem('@newProgress:token', JSON.stringify(token));
         return history.push("/habits");
       })
       .catch((e) => console.log(e));
