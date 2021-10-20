@@ -7,7 +7,7 @@ function App() {
     <div>
       <GlobalStyled />
       <Routes />
-      <Card />
+      <Card type={false} />
     </div>
   );
 }

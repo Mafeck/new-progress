@@ -1,10 +1,10 @@
-import { Container, Img } from "./style"; 
+import { Container } from "./style"; 
 
 const Card = ({type = false, title, category}) => {
 
     return (
-        <Container>
-            <Img className='imgBox'></Img>
+        <Container type={type}>
+            <div className='imgBox'></div>
             <div>
                 <h4>{title} title</h4>
                 <span>{category} cat</span>
