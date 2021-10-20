@@ -17,3 +17,8 @@ export const formSchema = yup.object().shape({
     .string()
     .oneOf([yup.ref("password"), null], "Senha incorreta."),
 });
+
+export const loginFormSchema = yup.object().shape({
+  username: yup.string().required("Usuário obrigatório."),
+  password: yup.string().required("Senha obrigatória."),
+});

@@ -1,10 +1,10 @@
 import { Switch, Route } from "react-router-dom";
+import Group from "../pages/Group/index.jsx";
+import Groups from "../pages/Groups/index.jsx";
+import Habits from "../pages/Habits/index.jsx";
 import Home from "../pages/Home/index.jsx";
 import Register from "../pages/Register/index.jsx";
 import Login from "../pages/Login/index.jsx";
-import Habits from "../pages/Habits/index.jsx";
-import Groups from "../pages/Groups/index.jsx";
-import Group from "../pages/Group/index.jsx";
 
 const Routes = () => {
   return (
@@ -12,19 +12,19 @@ const Routes = () => {
       <Route exact path="/">
         <Home />
       </Route>
-      <Route path="/register">
+      <Route exact path="/register">
         <Register />
       </Route>
-      <Route path="/login">
+      <Route exact path="/login">
         <Login />
       </Route>
-      <Route path="/habits">
+      <Route exact path="/habits">
         <Habits />
       </Route>
-      <Route path="/groups">
+      <Route exact path="/groups">
         <Groups />
       </Route>
-      <Route path="/groups/group">
+      <Route exact path="/groups/group">
         <Group />
       </Route>
     </Switch>

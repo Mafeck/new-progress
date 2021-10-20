@@ -20,12 +20,7 @@ const Register = () => {
   });
 
   const handleForm = ({ username, email, password }) => {
-    const data = {
-      username,
-      email,
-      password,
-    };
-
+    const data = { username, email, password };
     api
       .post("/users/", data)
       .then(() => {
@@ -74,6 +69,8 @@ const Register = () => {
           />
           <Input
             label={"Confirmar senha"}
+            name="confirmPassword"
+            register={register}
             type="password"
             name="confirmPassword"
             register={register}

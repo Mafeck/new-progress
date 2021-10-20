@@ -1,6 +1,6 @@
 import { Container, Perfil, ContainerPerfil, Modal } from "./style";
 import { IoPersonCircle } from "react-icons/io5";
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import { useHistory } from "react-router";
 import { FiLogOut } from "react-icons/fi";
 import { FaRegEdit } from "react-icons/fa";
@@ -11,12 +11,11 @@ import jwtDecode from "jwt-decode";
 import api from "../../services/api";
 
 const Header = () => {
-  const { user, token } = useContext(UserContext);
-  // const [tokenDecode] = useState(jwtDecode(token));
+  const { user, setUser, token } = useContext(UserContext);
+  const [tokenDecode] = useState(jwtDecode(token) || "");
   const [render, setRender] = useState(false);
   const [renderEditModal, setRenderEditModal] = useState(false);
-  const [username, setUsername] = useState(user.username);
-  const data = { username: username };
+  const [name, setName] = useState(user.username);
   const history = useHistory();
 
   const handlePerfil = () => {
@@ -36,9 +35,25 @@ const Header = () => {
     }
   };
 
-  // const handleSaveAlteration = () => {
-  //   api.patch(`users/${tokenDecode.user_id}`, data).then().catch((error) => console.log(error));
-  // };
+  const handleSaveAlteration = (data) => {
+    data = { username: name };
+
+    api
+      .patch(`/users/${tokenDecode.user_id}/`, data, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then(() => {
+        setRenderEditModal(false);
+        setUser({
+          username: data.username,
+          password: user.password,
+        });
+        console.log(user);
+      })
+      .catch((error) => console.log(error));
+  };
 
   const handleLogout = () => {
     localStorage.clear();
@@ -95,10 +110,16 @@ const Header = () => {
             <main className="modalBody">
               <input
                 type="text"
-                value={`${username}`}
-                onChange={(evt) => setUsername(evt.target.value)}
+                value={name}
+                onChange={(evt) => setName(evt.target.value)}
               />
-              <Button whiteSchema={true}>Salvar Alteração</Button>
+              <Button
+                type="button"
+                whiteSchema={true}
+                onClick={handleSaveAlteration}
+              >
+                Salvar Alteração
+              </Button>
             </main>
           </div>
         </Modal>
