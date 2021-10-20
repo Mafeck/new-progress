@@ -50,7 +50,6 @@ const Header = () => {
           username: data.username,
           password: user.password,
         });
-        console.log(user);
       })
       .catch((error) => console.log(error));
   };
@@ -63,6 +62,7 @@ const Header = () => {
 
   return (
     <Container>
+      <div className="logo"></div>
       <Perfil>
         <h5>{user.username}</h5>
         <div className="perfil" onClick={handlePerfil}>

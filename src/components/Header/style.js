@@ -1,4 +1,5 @@
 import styled, { keyframes } from "styled-components";
+import logo from "../../assets/Group 53.png";
 
 export const Container = styled.div`
   background: #ededed;
@@ -7,6 +8,14 @@ export const Container = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  .logo {
+    width: 110px;
+    height: 35px;
+    background: url(${logo}) no-repeat;
+    background-size: contain;
+    margin-left: 15px;
+  }
 `;
 
 export const Perfil = styled.div`
