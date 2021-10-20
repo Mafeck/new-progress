@@ -13,4 +13,7 @@ export const Container = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
+  position: fixed;
+  bottom: 50px;
+  right: 10px;
 `;

@@ -8,6 +8,7 @@ export const Container = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: fixed;
 
   .logo {
     width: 110px;
