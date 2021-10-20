@@ -9,15 +9,15 @@ import Login from "../pages/Login";
 const Routes = () => {
   return (
     <Switch>
-      <Route exact path="/">
+      {/* <Route exact path="/">
         <Home />
-      </Route>
+      </Route> */}
       <Route path="/register">
         <Register />
       </Route>
-      <Route path="/login">
+      {/* <Route path="/login">
         <Login />
-      </Route>
+      </Route> */}
       <Route path="/habits">
         <Habits />
       </Route>
