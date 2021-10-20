@@ -1,5 +1,12 @@
+import Header from "../../components/Header";
+import jwtDecode from "jwt-decode";
+
 const Groups = () => {
-  return <></>;
+  return (
+    <div>
+      {/* <Header /> */}
+    </div>
+    );
 };
 
 export default Groups;
