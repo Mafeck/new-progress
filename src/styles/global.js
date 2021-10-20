@@ -9,6 +9,7 @@ export default createGlobalStyle`
         font-family: 'Inter', sans-serif;
     }
     :root {
+        --white: #ffffff;
         --color-primary: #3B4977;
         --color-secondary: #3B7773;
         --color-tertiary: #968FE9;
