@@ -1,6 +1,6 @@
 import { Container, Perfil, ContainerPerfil, Modal } from "./style";
 import { IoPersonCircle } from "react-icons/io5";
-import { useContext, useState, useEffect } from "react";
+import { useContext, useState } from "react";
 import { useHistory } from "react-router";
 import { FiLogOut } from "react-icons/fi";
 import { FaRegEdit } from "react-icons/fa";
