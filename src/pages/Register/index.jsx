@@ -7,7 +7,6 @@ import { useHistory } from "react-router";
 import { formSchema } from "../../components/Validation";
 import { Button } from "../../components/Button";
 import { Input } from "../../components/Input";
-import { PlusButton } from "../../components/PlusButton";
 
 const Register = () => {
   const history = useHistory();
@@ -21,16 +20,12 @@ const Register = () => {
   });
 
   const handleForm = ({ username, email, password }) => {
-<<<<<<< HEAD
     const data = {
       username,
       email,
       password,
     };
 
-=======
-    const data = { username, email, password };
->>>>>>> feature/plusButton
     api
       .post("/users/", data)
       .then(() => {
@@ -81,13 +76,8 @@ const Register = () => {
           <Input
             label={"Confirmar senha"}
             name="confirmPassword"
-<<<<<<< HEAD
             type="confirmPassword"
             register={register}
-=======
-            register={register}
-            type="password"
->>>>>>> feature/plusButton
             error={!!errors.confirmPassword}
             helperText={errors.confirmPassword?.message}
           />
@@ -96,7 +86,6 @@ const Register = () => {
             Back
           </Button>
         </form>
-        <PlusButton greenSchema={true} />
       </Paper>
     </Container>
   );
