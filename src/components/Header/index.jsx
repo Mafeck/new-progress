@@ -12,7 +12,7 @@ import api from "../../services/api";
 
 const Header = () => {
   const { user, setUser, token } = useContext(UserContext);
-  const [tokenDecode] = useState(jwtDecode(token) || "");
+  const [tokenDecode] = useState(jwtDecode(token));
   const [render, setRender] = useState(false);
   const [renderEditModal, setRenderEditModal] = useState(false);
   const [name, setName] = useState(user.username);
