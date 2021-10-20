@@ -1,4 +1,4 @@
-import { Container, DivTitle, DivImg } from "./styles";
+import { Container, DivLogo, DivImg } from "./styles";
 import { Link, useHistory } from "react-router-dom";
 import { Button } from "../../components/Button/index";
 
@@ -11,17 +11,11 @@ const Home = () => {
 
   return (
     <Container>
-      <DivTitle>
-        <div className="boxTitle">
-          <h1 className="title--1">New</h1>
-        </div>
-        <h1 className="title--2">Progress</h1>
-      </DivTitle>
-
+      <DivLogo />
       <DivImg />
       <div className="sectionRedirect">
         <Button whiteSchema={true} onClick={handleStarNow}>
-          Start now
+          Iniciar agora
         </Button>
         <p>
           Já tem uma conta?

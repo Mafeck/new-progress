@@ -24,7 +24,6 @@ const Login = () => {
   });
 
   const onSubmitFunction = (data) => {
-    localStorage.setItem("@newProgress:user", JSON.stringify(data));
     setUser(data);
     api
       .post("/sessions/", data)
@@ -32,6 +31,7 @@ const Login = () => {
         const token = response.data.access;
         setToken(token);
         localStorage.clear();
+        localStorage.setItem("@newProgress:user", JSON.stringify(data));
         localStorage.setItem("@newProgress:token", JSON.stringify(token));
         return history.push("/habits");
       })

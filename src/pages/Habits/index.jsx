@@ -1,10 +1,13 @@
+import { Container } from "./styles";
 import Header from "../../components/Header/index";
+import { PlusButton } from "../../components/PlusButton";
 
 const Habits = () => {
   return (
-    <div>
+    <Container>
       <Header />
-    </div>
+      <PlusButton className="plusButton" />
+    </Container>
   );
 };
 

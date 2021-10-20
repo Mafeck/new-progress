@@ -20,22 +20,27 @@ export default createGlobalStyle`
         --gray-2: #F5F5F5;
         --border-width-input-button: 2px;
     }
+    
     body {
         /* background: ; */
         font-family: 'Inter', sans-serif;
     }
+
     border-list-style, input, button {
         /* font-family: ; */
         /* font-size: ; */
     }
+
     h1, h2, h3, h4, h5, h6 {
         /* font-family: ; */
     }
+
     button {
         cursor: pointer;
     }
+
     a {
-        /* color: ; */
+        color: var(--color-primary);
         text-decoration: none;
     }
 
