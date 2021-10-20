@@ -4,7 +4,7 @@ export const formSchema = yup.object().shape({
   username: yup
     .string()
     .required("Usuário obrigatório.")
-    .matches("/^[a-zA-Z0-9]+$/", "Usuário inválido"),
+    .matches(/^[a-zA-Z0-9]+$/, "Usuário inválido"),
   email: yup.string().required("Email obrigatório").email("Email invalido."),
   password: yup
     .string()
