@@ -13,7 +13,7 @@ import { UserContext } from "../../Providers/User";
 
 const Login = () => {
   const history = useHistory();
-  const { setUser } = useContext(UserContext);
+  const { setUser, setToken } = useContext(UserContext);
 
   const {
     register,
@@ -30,6 +30,8 @@ const Login = () => {
       .post("/sessions/", data)
       .then((response) => {
         const token = response.data.access;
+        setToken(token);
+        localStorage.clear();
         localStorage.setItem("@newProgress:token", JSON.stringify(token));
         return history.push("/habits");
       })

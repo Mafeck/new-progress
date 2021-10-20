@@ -20,7 +20,9 @@ const Home = () => {
 
       <DivImg />
       <div className="sectionRedirect">
-        <Button whiteSchema={true} onClick={handleStarNow}>Start now</Button>
+        <Button whiteSchema={true} onClick={handleStarNow}>
+          Start now
+        </Button>
         <p>
           Já tem uma conta?
           <Link to="/login">
