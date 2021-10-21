@@ -1,6 +1,7 @@
-import { Container, Modal, CreateHabit } from "./styles";
+import { Container, Modal, ChildModal, ChildModal2 } from "./styles";
 import { AiOutlineClose } from "react-icons/ai";
 import { Button } from "../../components/Button/index";
+import Card from "../../components/Card/index";
 import Header from "../../components/Header/index";
 import { PlusButton } from "../../components/PlusButton";
 import { useState, useContext, useEffect } from "react";
@@ -18,10 +19,20 @@ const Habits = () => {
   const [difficulty, setDifficulty] = useState("");
   const [frequency, setFrequency] = useState("");
   const [createHabit, setCreatHabit] = useState(false);
+  const [patchHabits, setPatchHabits] = useState(false);
+  const [habitId, setHabitId] = useState("");
+  const [achieved, setAchieved] = useState("20");
 
   const handleCreateModal = () => {
-    if (createHabit == false) {
+    if (createHabit === false) {
       setCreatHabit(true);
+    }
+  };
+
+  const handlePatchModal = (evt) => {
+    if (patchHabits === false) {
+      setPatchHabits(true);
+      setHabitId(evt.currentTarget.id);
     }
   };
 
@@ -46,14 +57,54 @@ const Habits = () => {
       .catch((error) => console.log(error));
   };
 
-  useEffect(() => {
+  const handleSaveChanges = (data) => {
+    data = {
+      how_much_achieved: achieved,
+      achieved: false,
+    };
+
     api
-      .get("/habits/", {
+      .patch(`/habits/${habitId}/`, data, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       })
-      .then((res) => setHabits(res.data.results));
+      .then((res) => {
+        console.log(res);
+        setPatchHabits(false);
+      })
+      .catch((error) => console.log(error));
+  };
+
+  const handleConcluded = (data) => {
+    data = {
+      how_much_achieved: 100,
+      achieved: true,
+    };
+
+    api
+      .patch(`/habits/${habitId}/`, data, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((res) => {
+        console.log(res);
+        setPatchHabits(false);
+      })
+      .catch((error) => console.log(error));
+  };
+
+  useEffect(() => {
+    //criar paginação para pegar os hábitos do usuário
+    api
+      .get("/habits/?page=1", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((res) => setHabits(res.data.results))
+      .catch((error) => console.log(error));
   }, []);
 
   return (
@@ -64,7 +115,7 @@ const Habits = () => {
           id="Modal"
           onClick={(evt) => evt.target.id === "Modal" && setCreatHabit(false)}
         >
-          <CreateHabit>
+          <ChildModal>
             <header className="title">
               <h3>Criar Hábito</h3>
               <AiOutlineClose
@@ -101,7 +152,51 @@ const Habits = () => {
                 Criar
               </Button>
             </main>
-          </CreateHabit>
+          </ChildModal>
+        </Modal>
+      )}
+      {habits &&
+        habits.map((value, index) => {
+          return (
+            <Card
+              onClick={handlePatchModal}
+              id={value.id}
+              key={index}
+              type={true}
+              title={value.title}
+              category={value.category}
+            ></Card>
+          );
+        })}
+      {patchHabits && (
+        <Modal
+          id="Modal"
+          onClick={(evt) => {
+            evt.target.id === "Modal" && setPatchHabits(false);
+          }}
+        >
+          <ChildModal2>
+            <header className="title">
+              <h3>Detalhes do Hábito</h3>
+              <AiOutlineClose
+                className="close"
+                onClick={() => setPatchHabits(false)}
+              />
+            </header>
+            <main className="main">
+              <div className="divButton--2">
+                <select onChange={(evt) => setAchieved(evt.target.value)}>
+                  <option>20</option>
+                  <option>40</option>
+                  <option>60</option>
+                  <option>80</option>
+                  <option>100</option>
+                </select>
+                <button onClick={handleConcluded}>concluído</button>
+              </div>
+              <Button onClick={handleSaveChanges}>Salvar alterações</Button>
+            </main>
+          </ChildModal2>
         </Modal>
       )}
       <PlusButton onClick={handleCreateModal} className="plusButton" />
