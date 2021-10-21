@@ -13,6 +13,7 @@ import { Button } from "../../components/Button";
 import { TextField } from "@material-ui/core";
 import { toast } from "react-toastify";
 import { GroupItensButton } from "./style";
+import AppBar from "../../components/AppBar";
 
 const Groups = () => {
   const { groups, setGroups } = useContext(GroupsContext);
@@ -162,7 +163,7 @@ const Groups = () => {
                       backgroundColor: "var(--gray-2)",
                       color: "var(--color-text)",
                       border: "none",
-                      margin: "0 15px",
+                      margin: "2px 15px 0 ",
                     }}
                   >
                     Médio
@@ -284,6 +285,7 @@ const Groups = () => {
             </div>
           </Modal>
         )}
+        <AppBar selectedGroup={true} />
       </ContainerGroup>
     </section>
   );

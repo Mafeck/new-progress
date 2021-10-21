@@ -52,7 +52,7 @@ export const ModalContent = styled.div`
   grid-gap: 2rem;
   align-content: center;
   align-items: flex-start;
-  padding: 30px 10px;
+  padding: 10px;
   justify-content: space-around;
   flex-direction: column;
 `;

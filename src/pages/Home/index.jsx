@@ -17,7 +17,6 @@ const Home = () => {
         </div>
         <h1 className="title--2">Progress</h1>
       </DivTitle>
-
       <DivImg />
       <div className="sectionRedirect">
         <Button whiteSchema={true} onClick={handleStarNow}>

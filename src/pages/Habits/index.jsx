@@ -1,9 +1,11 @@
-import Header from "../../components/Header/index";
+import AppBar from "../../components/AppBar";
+import Header from "../../components/Header";
 
 const Habits = () => {
   return (
     <div>
       <Header />
+      <AppBar selectedHabits={true} />
     </div>
   );
 };
