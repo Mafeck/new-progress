@@ -13,7 +13,7 @@ import { UserContext } from "../../Providers/User";
 
 const Login = () => {
   const history = useHistory();
-  const { setUser, setToken } = useContext(UserContext);
+  const { setToken } = useContext(UserContext);
 
   const {
     register,
@@ -24,15 +24,14 @@ const Login = () => {
   });
 
   const onSubmitFunction = (data) => {
-    localStorage.setItem("@newProgress:user", JSON.stringify(data));
-    setUser(data);
-    api
-      .post("/sessions/", data)
-      .then((response) => {
-        const token = response.data.access;
-        setToken(token);
-        localStorage.clear();
-        localStorage.setItem("@newProgress:token", JSON.stringify(token));
+   api
+    .post("/sessions/", data)
+    .then((response) => {
+      const token = response.data.access;
+      setToken(token);
+      localStorage.clear();
+      localStorage.setItem("@newProgress:token", JSON.stringify(token));
+      localStorage.setItem("@newProgress:user", JSON.stringify(data));
         return history.push("/habits");
       })
       .catch((e) => console.log(e));

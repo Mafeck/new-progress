@@ -8,7 +8,6 @@ export const Container = styled.div`
   height: 80px;
   padding: 15px 10px;
   background-color: var(--white);
-
   h4 {
     font-size: 12px;
     font-weight: 600;
@@ -16,7 +15,6 @@ export const Container = styled.div`
     letter-spacing: -0.017em;
     color: var(--color-title);
   }
-
   span {
     font-weight: normal;
     font-size: 10px;
@@ -24,11 +22,18 @@ export const Container = styled.div`
     letter-spacing: -0.017em;
     color: var(--color-text);
   }
-
   .imgBox {
     background: ${(props) =>
       props.type ? `url(${HabitIcon})` : `url(${GroupIcon})`};
     width: 50px;
     margin-right: 10px;
+  }
+
+  a {
+    cursor: pointer;
+  }
+
+  :hover {
+    border: 2px solid var(--color-secondary);
   }
 `;
