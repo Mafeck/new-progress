@@ -7,6 +7,7 @@ import { FaRegEdit } from "react-icons/fa";
 import { AiOutlineClose } from "react-icons/ai";
 import { UserContext } from "../../Providers/User";
 import { Button } from "../../components/Button/index";
+
 import jwtDecode from "jwt-decode";
 import api from "../../services/api";
 
