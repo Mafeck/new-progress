@@ -1,11 +1,7 @@
 import Header from "../../components/Header";
 
 const Groups = () => {
-  return (
-    <>
-      <Header></Header>
-    </>
-  );
+  return <div></div>;
 };
 
 export default Groups;

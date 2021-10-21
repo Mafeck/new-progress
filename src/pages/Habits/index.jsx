@@ -1,11 +1,5 @@
-import Header from "../../components/Header/index";
-
 const Habits = () => {
-  return (
-    <div>
-      <Header />
-    </div>
-  );
+  return <div></div>;
 };
 
 export default Habits;
