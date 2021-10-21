@@ -39,6 +39,7 @@ export const ModalHeader = styled.header`
   align-items: center;
   justify-content: space-between;
   padding: 15px;
+  border-radius: 5px 5px 0 0;
   .pink {
     background-color: var(--color-quaternary);
   }

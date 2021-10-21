@@ -4,7 +4,7 @@ import logo from "../../assets/Group 53.png";
 export const Container = styled.div`
   background: #ededed;
   width: 100%;
-  height: 10%;
+  height: 60px;
   display: flex;
   justify-content: space-between;
   align-items: center;

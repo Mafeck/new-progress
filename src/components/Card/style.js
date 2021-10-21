@@ -8,6 +8,7 @@ export const Container = styled.div`
   height: 80px;
   padding: 15px 10px;
   background-color: var(--white);
+  margin: 10px 0;
   h4 {
     font-size: 12px;
     font-weight: 600;
@@ -34,6 +35,6 @@ export const Container = styled.div`
   }
 
   :hover {
-    border: 2px solid var(--color-secondary);
+    border: 2px solid var(--gray-1);
   }
 `;

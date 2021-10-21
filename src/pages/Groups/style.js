@@ -1,7 +1,10 @@
 import styled from "styled-components";
 
 export const ContainerGroup = styled.div`
-  margin: 30px 0;
+  margin: 20px 0 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
   .group {
     background-color: var(--color-secondary);
@@ -20,6 +23,28 @@ export const ContainerGroup = styled.div`
   .meta {
     background-color: var(--color-quaternary);
     color: var(--white);
+  }
+  #select {
+    width: 100%;
+    height: 50px;
+    margin: 5px 0 13px;
+    border-radius: 5px;
+    border: 1px solid var(--gray-1);
+    padding: 10px;
+    background-color: var(--white);
+  }
+
+  .filterGroups {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+  }
+  p {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 12px;
+    letter-spacing: -0.017em;
+    text-align: start;
   }
 `;
 
@@ -49,4 +74,13 @@ export const GroupItensButton = styled.button`
     letter-spacing: -0.017em;
     text-align: start;
   }
+`;
+
+export const InputDate = styled.input`
+  width: 100%;
+  height: 50px;
+  margin: 5px 0 13px;
+  border-radius: 5px;
+  border: 1px solid var(--gray-1);
+  padding: 10px;
 `;

@@ -1,19 +1,22 @@
 import Header from "../../components/Header";
 import { useContext, useState } from "react";
 import { GroupsContext } from "../../Providers/Groups";
+import { ActivitiesContext } from "../../Providers/Activities";
 import Card from "../../components/Card";
 import { useEffect } from "react";
 import api from "../../services/api";
 import { UserContext } from "../../Providers/User";
 import { Link } from "react-router-dom";
 import { PlusButton } from "../../components/PlusButton";
-import { ContainerGroup } from "./style";
+import { ContainerGroup, InputDate } from "./style";
 import Modal from "../../components/Modal";
 import { Button } from "../../components/Button";
 import { TextField } from "@material-ui/core";
 import { toast } from "react-toastify";
 import { GroupItensButton } from "./style";
 import AppBar from "../../components/AppBar";
+import Select from "react-select";
+import { GoalsContext } from "../../Providers/Goals";
 
 const Groups = () => {
   const { groups, setGroups } = useContext(GroupsContext);
@@ -24,9 +27,15 @@ const Groups = () => {
   const [category, setCategory] = useState("");
   const [isAtvModalVisible, setIsAtvModalVisible] = useState(false);
   const [isMetaModalVisible, setIsMetaModalVisible] = useState(false);
-  const [title, setTitle] = useState("");
+  const [atvTitle, setAtvTitle] = useState("");
   const [date, setDate] = useState("");
-  const [selectGroup, setSelectGroup] = useState("");
+  const [selectedGroup, setSelectedGroup] = useState({});
+  const { activities, setActivities } = useContext(ActivitiesContext);
+  const [goalsTitle, setGoalsTitle] = useState("");
+  const [achieved, setAchieved] = useState("20");
+  const [goalsDifficulty, setGoalsDifficulty] = useState("");
+  const { goals, setGoals } = useContext(GoalsContext);
+  const [updatePage, setUpdatePage] = useState("");
 
   useEffect(() => {
     api
@@ -39,9 +48,23 @@ const Groups = () => {
         setGroups(res.data.results);
       })
       .catch((err) => console.log(err));
-  }, []);
+  }, [updatePage]);
 
-  const handleClick = (data) => {
+  const filterGroups = () => {
+    api
+      .get("/groups/subscriptions/", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((res) => {
+        setGroups(res.data);
+        setUpdatePage("no update");
+      })
+      .catch((err) => console.log(err));
+  };
+
+  const createGroup = (data) => {
     data = {
       name: name,
       description: description,
@@ -57,11 +80,57 @@ const Groups = () => {
         setGroups([...groups, res.data]);
         setIsModalVisible(false);
         toast.success("Grupo criado com sucesso!");
-        console.log(res);
       })
 
       .catch((error) => console.log(error));
   };
+
+  const createActivity = (data) => {
+    data = {
+      title: atvTitle,
+      realization_time: new Date(date),
+      group: selectedGroup.id,
+    };
+    api
+      .post("/activities/", data, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((res) => {
+        setActivities([...activities, res.data]);
+        setIsAtvModalVisible(false);
+        toast.success("Atividade criada com sucesso!");
+      })
+
+      .catch((error) => console.log(error));
+  };
+
+  const createGoals = (data) => {
+    data = {
+      title: goalsTitle,
+      difficulty: goalsDifficulty,
+      how_much_achieved: achieved,
+      group: selectedGroup.id,
+    };
+    api
+      .post("/goals/", data, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((res) => {
+        setGoals([...goals, res.data]);
+        setIsMetaModalVisible(false);
+        toast.success("Meta criada com sucesso!");
+      })
+
+      .catch((error) => console.log(error));
+  };
+
+  const groupNames = groups.map((group) => {
+    return { id: group.id, label: group.name };
+  });
 
   return (
     <section>
@@ -84,34 +153,27 @@ const Groups = () => {
               <div>
                 <TextField
                   type="text"
-                  value={title}
+                  value={atvTitle}
                   id="outlined-username"
                   variant="outlined"
                   margin="normal"
                   size="medium"
                   fullWidth
-                  onChange={(e) => setName(e.target.value)}
+                  onChange={(e) => setAtvTitle(e.target.value)}
                   placeholder="Título"
                 />
-                <input
+                <InputDate
                   type="date"
-                  value={date}
-                  onChange={(e) => setDate(e.target.value)}
-                  className="inputData"
+                  onChange={(evt) => setDate(evt.target.value)}
                 />
-                <TextField
-                  type="text"
-                  value={selectGroup}
-                  id="outlined-username"
-                  variant="outlined"
-                  margin="normal"
-                  size="medium"
-                  fullWidth
-                  onChange={(e) => setCategory(e.target.value)}
-                  placeholder="Selecionar Grupo"
+                <Select
+                  options={groupNames}
+                  value={selectedGroup}
+                  onChange={(selectedGroup) => setSelectedGroup(selectedGroup)}
                 />
+
                 <Button
-                  onClick={handleClick}
+                  onClick={createActivity}
                   style={{
                     backgroundColor: "var(--color-tertiary)",
                     border: "none",
@@ -136,18 +198,19 @@ const Groups = () => {
               <div>
                 <TextField
                   type="text"
-                  value={title}
+                  value={goalsTitle}
                   id="outlined-username"
                   variant="outlined"
                   margin="normal"
                   size="medium"
                   fullWidth
-                  onChange={(e) => setName(e.target.value)}
+                  onChange={(e) => setGoalsTitle(e.target.value)}
                   placeholder="Titulo"
                 />
                 <div>
                   <h5>Dificuldade</h5>
                   <Button
+                    onClick={() => setGoalsDifficulty("Fácil")}
                     style={{
                       width: "30%",
                       backgroundColor: "var(--gray-2)",
@@ -158,6 +221,7 @@ const Groups = () => {
                     Fácil
                   </Button>
                   <Button
+                    onClick={() => setGoalsDifficulty("Médio")}
                     style={{
                       width: "30%",
                       backgroundColor: "var(--gray-2)",
@@ -169,6 +233,7 @@ const Groups = () => {
                     Médio
                   </Button>
                   <Button
+                    onClick={() => setGoalsDifficulty("Difícil")}
                     style={{
                       width: "30%",
                       backgroundColor: "var(--gray-2)",
@@ -179,30 +244,23 @@ const Groups = () => {
                     Difícil
                   </Button>
                 </div>
-                <TextField
-                  type="text"
-                  value={selectGroup}
-                  id="outlined-username"
-                  variant="outlined"
-                  margin="normal"
-                  size="medium"
-                  fullWidth
-                  onChange={(e) => setCategory(e.target.value)}
-                  placeholder="Evolução"
-                />
-                <TextField
-                  type="text"
-                  value={selectGroup}
-                  id="outlined-username"
-                  variant="outlined"
-                  margin="normal"
-                  size="medium"
-                  fullWidth
-                  onChange={(e) => setCategory(e.target.value)}
-                  placeholder="Selecionar grupo"
+                <select
+                  id="select"
+                  onChange={(evt) => setAchieved(evt.target.value)}
+                >
+                  <option>20</option>
+                  <option>40</option>
+                  <option>60</option>
+                  <option>80</option>
+                  <option>100</option>
+                </select>
+                <Select
+                  options={groupNames}
+                  value={selectedGroup}
+                  onChange={(selectedGroup) => setSelectedGroup(selectedGroup)}
                 />
                 <Button
-                  onClick={handleClick}
+                  onClick={createGoals}
                   style={{
                     backgroundColor: "var(--color-quaternary)",
                     border: "none",
@@ -214,6 +272,38 @@ const Groups = () => {
               </div>
             </Modal>
           )}
+        </div>
+        <div className="filterGroups">
+          <Button
+            onClick={() => setUpdatePage("update")}
+            style={{
+              width: "42%",
+              height: "40px",
+              padding: "0",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              backgroundColor: "var(--color-secondary)",
+              border: "none",
+            }}
+          >
+            <p>Todos os Grupos</p>
+          </Button>
+          <Button
+            style={{
+              width: "42%",
+              height: "40px",
+              padding: "0",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              backgroundColor: "var(--color-secondary)",
+              border: "none",
+            }}
+            onClick={filterGroups}
+          >
+            <p>Meus Grupos</p>
+          </Button>
         </div>
         <div>
           {groups.map((item, index) => (
@@ -273,7 +363,7 @@ const Groups = () => {
                 placeholder="categoria"
               />
               <Button
-                onClick={handleClick}
+                onClick={createGroup}
                 style={{
                   backgroundColor: "var(--color-secondary)",
                   border: "none",
