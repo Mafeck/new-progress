@@ -9,6 +9,8 @@ export const Container = styled.div`
   justify-content: space-between;
   align-items: center;
   position: fixed;
+  top: 0;
+  left: 0;
 
   .logo {
     width: 110px;
@@ -80,8 +82,9 @@ export const ContainerPerfil = styled.div`
 
       p {
         color: #c4c4c4;
-        font-size: 8px;
+        font-size: 10px;
         font-weight: bold;
+        text-align: left;
       }
     }
   }

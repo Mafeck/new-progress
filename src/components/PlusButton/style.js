@@ -14,6 +14,6 @@ export const Container = styled.button`
   justify-content: center;
   align-items: center;
   position: fixed;
-  bottom: 50px;
-  right: 10px;
+  bottom: 80px;
+  right: 20px;
 `;
