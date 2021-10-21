@@ -20,6 +20,12 @@ export const Container = styled.main`
             line-height: 19px;
             letter-spacing: -0.017em;
             color: var(--gray-1);
+
+            :hover {
+                border: 2px solid var(--color-secondary);
+                color: var(--color-secondary);
+                transition: 0.5s;
+            }
         }
     }
 
