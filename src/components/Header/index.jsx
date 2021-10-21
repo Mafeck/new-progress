@@ -1,12 +1,13 @@
 import { Container, Perfil, ContainerPerfil, Modal } from "./style";
 import { IoPersonCircle } from "react-icons/io5";
-import { useContext, useState, useEffect } from "react";
+import { useContext, useState } from "react";
 import { useHistory } from "react-router";
 import { FiLogOut } from "react-icons/fi";
 import { FaRegEdit } from "react-icons/fa";
 import { AiOutlineClose } from "react-icons/ai";
 import { UserContext } from "../../Providers/User";
 import { Button } from "../../components/Button/index";
+
 import jwtDecode from "jwt-decode";
 import api from "../../services/api";
 
