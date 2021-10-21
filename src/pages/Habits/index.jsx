@@ -4,6 +4,7 @@ import { Button } from "../../components/Button/index";
 import Card from "../../components/Card/index";
 import Header from "../../components/Header/index";
 import { PlusButton } from "../../components/PlusButton";
+import { BsTrashFill } from "react-icons/bs";
 import { useState, useContext, useEffect } from "react";
 import api from "../../services/api";
 import { UserContext } from "../../Providers/User";
@@ -22,6 +23,7 @@ const Habits = () => {
   const [patchHabits, setPatchHabits] = useState(false);
   const [habitId, setHabitId] = useState("");
   const [achieved, setAchieved] = useState("20");
+  const [update, setUpdate] = useState("");
 
   const handleCreateModal = () => {
     if (createHabit === false) {
@@ -53,7 +55,10 @@ const Habits = () => {
           Authorization: `Bearer ${token}`,
         },
       })
-      .then((res) => console.log(res))
+      .then((res) => {
+        setCreatHabit(false);
+        setUpdate(res);
+      })
       .catch((error) => console.log(error));
   };
 
@@ -70,7 +75,7 @@ const Habits = () => {
         },
       })
       .then((res) => {
-        console.log(res);
+        setUpdate(res);
         setPatchHabits(false);
       })
       .catch((error) => console.log(error));
@@ -89,23 +94,36 @@ const Habits = () => {
         },
       })
       .then((res) => {
-        console.log(res);
+        setUpdate(res);
         setPatchHabits(false);
       })
       .catch((error) => console.log(error));
   };
 
-  useEffect(() => {
-    //criar paginação para pegar os hábitos do usuário
+  const deleteHabit = () => {
     api
-      .get("/habits/?page=1", {
+      .delete(`/habits/${habitId}/`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       })
-      .then((res) => setHabits(res.data.results))
+      .then((res) => {
+        setUpdate(res);
+        setPatchHabits(false);
+        setHabits([]);
+      });
+  };
+
+  useEffect(() => {
+    api
+      .get(`/habits/personal/`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((res) => setHabits(res.data))
       .catch((error) => console.log(error));
-  }, []);
+  }, [update]);
 
   return (
     <Container>
@@ -165,7 +183,9 @@ const Habits = () => {
               type={true}
               title={value.title}
               category={value.category}
-            ></Card>
+            >
+              <BsTrashFill color="#CCCCCC" />
+            </Card>
           );
         })}
       {patchHabits && (
@@ -192,7 +212,8 @@ const Habits = () => {
                   <option>80</option>
                   <option>100</option>
                 </select>
-                <button onClick={handleConcluded}>concluído</button>
+                <button onClick={handleConcluded}>concluir</button>
+                <button onClick={deleteHabit}>excluir</button>
               </div>
               <Button onClick={handleSaveChanges}>Salvar alterações</Button>
             </main>

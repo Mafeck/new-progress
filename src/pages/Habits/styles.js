@@ -173,7 +173,7 @@ export const ChildModal2 = styled.div`
       button {
         color: var(--color-text);
         font-weight: bold;
-        width: 45%;
+        width: 28%;
         height: 40px;
         font-size: 14px;
         border-radius: 5px;
