@@ -3,6 +3,7 @@ import { AiOutlineClose } from "react-icons/ai";
 import { Button } from "../../components/Button/index";
 import Card from "../../components/Card/index";
 import Header from "../../components/Header/index";
+import AppBar from "../../components/AppBar/index";
 import { PlusButton } from "../../components/PlusButton";
 import { BsTrashFill } from "react-icons/bs";
 import { useState, useContext, useEffect } from "react";
@@ -221,6 +222,7 @@ const Habits = () => {
         </Modal>
       )}
       <PlusButton onClick={handleCreateModal} className="plusButton" />
+      <AppBar selectedHabits={true} />
     </Container>
   );
 };
