@@ -8,23 +8,16 @@ export const Container = styled.main`
         justify-content: space-between;
         margin-bottom: 20px;
 
-        button {
-            padding: 0px 30px;
-            width: 104px;
-            height: 40px;
-            box-sizing: border-box;
-            border-radius: 8px;
-            border: var(--border-width-input-button) solid var(--gray-2);
-            font-weight: 500;
-            font-size: 16px;
-            line-height: 19px;
-            letter-spacing: -0.017em;
-            color: var(--gray-1);
+        .buttonBox {
 
-            :hover {
-                border: 2px solid var(--color-secondary);
-                color: var(--color-secondary);
-                transition: 0.5s;
+
+            button {
+                padding: 0;
+                width: 70px;
+                height: 35px;
+                font-weight: 500;
+                margin: 5px;
+                font-size: 14px;
             }
         }
     }
@@ -48,7 +41,7 @@ export const Container = styled.main`
             letter-spacing: -0.017em;
             color: var(--color-text);
             width: max-content;
-            max-width: 100%;
+            max-width: 80%;
         }
     }
 `;
