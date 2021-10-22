@@ -13,7 +13,7 @@ import { UserContext } from "../../Providers/User";
 
 const Login = () => {
   const history = useHistory();
-  const { setUser, setToken } = useContext(UserContext);
+  const { setToken, setUser } = useContext(UserContext);
 
   const {
     register,

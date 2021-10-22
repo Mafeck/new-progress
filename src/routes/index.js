@@ -24,7 +24,7 @@ const Routes = () => {
       <Route exact path="/groups">
         <Groups />
       </Route>
-      <Route exact path="/groups/group">
+      <Route exact path="/groups/group/:id">
         <Group />
       </Route>
     </Switch>

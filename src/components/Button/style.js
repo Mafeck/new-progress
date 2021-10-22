@@ -10,8 +10,7 @@ export const Container = styled.button`
   font-size: 16px;
   line-height: 19px;
   letter-spacing: -0.017em;
-  width: max-content;
-  max-width: 100%;
+  width: 100%;
   height: 50px;
   padding: 0px 30px;
   transition: 0.5s;

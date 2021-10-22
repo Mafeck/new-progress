@@ -1,6 +1,6 @@
 import styled, { keyframes } from "styled-components";
 
-export const LargeContainerModal = styled.div`
+export const ModalLargeContainer = styled.div`
   width: 100%;
   height: 100vh;
   position: fixed;
@@ -13,7 +13,7 @@ export const LargeContainerModal = styled.div`
   align-items: center;
 `;
 
-const EffectContainerModal = keyframes`
+const ModalEffectContainer = keyframes`
 0%{
   opacity: 0;
   transform: translateY(-10%)
@@ -24,54 +24,59 @@ const EffectContainerModal = keyframes`
   transform: translateY(0%)}
 `;
 
-export const ContainerModal = styled.div`
+export const ModalContainer = styled.div`
   background-color: #fff;
   width: 600px;
   border-radius: 5px;
-  animation: ${EffectContainerModal} 0.6s;
+  animation: ${ModalEffectContainer} 0.6s;
   @media (max-width: 990px) {
     width: 95%;
   }
 `;
 
-export const ContentModal = styled.div`
+export const ModalHeader = styled.header`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px;
+  border-radius: 5px 5px 0 0;
+  .pink {
+    background-color: var(--color-quaternary);
+  }
+  .green {
+    background-color: var(--color-secondary);
+  }
+`;
+
+export const ModalContent = styled.div`
   display: flex;
   grid-gap: 2rem;
   align-content: center;
   align-items: flex-start;
-  padding: 30px 10px;
+  padding: 10px;
   justify-content: space-around;
   flex-direction: column;
 `;
 
-export const Close = styled.button`
+export const ModalButtonClose = styled.button`
+  @import url("https://fonts.googleapis.com/css2?family=Nunito:wght@600&display=swap");
   background-color: transparent;
   outline: none;
   border: none;
-  right: calc(-100% + 35px);
-  top: 20px;
+  width: 40px;
+  height: 20px;
   cursor: pointer;
-  display: flex;
-  position: relative;
-  align-items: center;
-
-  &:before {
-    content: " ";
-    position: absolute;
-    width: 2.5px;
-    height: 24px;
-    background-color: #c1c1c1;
-    transform: rotate(45deg);
-    transition: 0.6s ease;
-  }
+  color: var(--white);
 
   &:after {
-    content: " ";
-    position: absolute;
-    width: 2.5px;
-    height: 24px;
-    background-color: #c1c1c1;
-    transform: rotate(-45deg);
+    content: "X";
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    font-size: 20px;
+    font-family: "Nunito", sans-serif;
     transition: 0.6s ease;
   }
 
