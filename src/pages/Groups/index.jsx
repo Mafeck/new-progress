@@ -1,42 +1,22 @@
 import Header from "../../components/Header";
-<<<<<<< HEAD
-<<<<<<< HEAD
-
-const Groups = () => {
-  return (
-    <>
-      <Header />
-    </>
-=======
 import { useContext, useState } from "react";
 import { GroupsContext } from "../../Providers/Groups";
 import { ActivitiesContext } from "../../Providers/Activities";
-=======
-import { useContext, useState } from "react";
-import { GroupsContext } from "../../Providers/Groups";
->>>>>>> feature/pageGroup
 import Card from "../../components/Card";
 import { useEffect } from "react";
 import api from "../../services/api";
 import { UserContext } from "../../Providers/User";
 import { Link } from "react-router-dom";
 import { PlusButton } from "../../components/PlusButton";
-<<<<<<< HEAD
 import { ContainerGroup, InputDate } from "./style";
-=======
-import { ContainerGroup } from "./style";
->>>>>>> feature/pageGroup
 import Modal from "../../components/Modal";
 import { Button } from "../../components/Button";
 import { TextField } from "@material-ui/core";
 import { toast } from "react-toastify";
 import { GroupItensButton } from "./style";
-<<<<<<< HEAD
 import AppBar from "../../components/AppBar";
 import Select from "react-select";
 import { GoalsContext } from "../../Providers/Goals";
-=======
->>>>>>> feature/pageGroup
 
 const Groups = () => {
   const { groups, setGroups } = useContext(GroupsContext);
@@ -47,7 +27,6 @@ const Groups = () => {
   const [category, setCategory] = useState("");
   const [isAtvModalVisible, setIsAtvModalVisible] = useState(false);
   const [isMetaModalVisible, setIsMetaModalVisible] = useState(false);
-<<<<<<< HEAD
   const [atvTitle, setAtvTitle] = useState("");
   const [date, setDate] = useState("");
   const [selectedGroup, setSelectedGroup] = useState({});
@@ -57,11 +36,6 @@ const Groups = () => {
   const [goalsDifficulty, setGoalsDifficulty] = useState("");
   const { goals, setGoals } = useContext(GoalsContext);
   const [updatePage, setUpdatePage] = useState("");
-=======
-  const [title, setTitle] = useState("");
-  const [date, setDate] = useState("");
-  const [selectGroup, setSelectGroup] = useState("");
->>>>>>> feature/pageGroup
 
   useEffect(() => {
     api
@@ -74,7 +48,6 @@ const Groups = () => {
         setGroups(res.data.results);
       })
       .catch((err) => console.log(err));
-<<<<<<< HEAD
   }, [updatePage]);
 
   const filterGroups = () => {
@@ -92,11 +65,6 @@ const Groups = () => {
   };
 
   const createGroup = (data) => {
-=======
-  }, []);
-
-  const handleClick = (data) => {
->>>>>>> feature/pageGroup
     data = {
       name: name,
       description: description,
@@ -112,16 +80,11 @@ const Groups = () => {
         setGroups([...groups, res.data]);
         setIsModalVisible(false);
         toast.success("Grupo criado com sucesso!");
-<<<<<<< HEAD
-=======
-        console.log(res);
->>>>>>> feature/pageGroup
       })
 
       .catch((error) => console.log(error));
   };
 
-<<<<<<< HEAD
   const createActivity = (data) => {
     data = {
       title: atvTitle,
@@ -169,8 +132,6 @@ const Groups = () => {
     return { id: group.id, label: group.name };
   });
 
-=======
->>>>>>> feature/pageGroup
   return (
     <section>
       <Header />
@@ -192,17 +153,12 @@ const Groups = () => {
               <div>
                 <TextField
                   type="text"
-<<<<<<< HEAD
                   value={atvTitle}
-=======
-                  value={title}
->>>>>>> feature/pageGroup
                   id="outlined-username"
                   variant="outlined"
                   margin="normal"
                   size="medium"
                   fullWidth
-<<<<<<< HEAD
                   onChange={(e) => setAtvTitle(e.target.value)}
                   placeholder="Título"
                 />
@@ -218,30 +174,6 @@ const Groups = () => {
 
                 <Button
                   onClick={createActivity}
-=======
-                  onChange={(e) => setName(e.target.value)}
-                  placeholder="Título"
-                />
-                <input
-                  type="date"
-                  value={date}
-                  onChange={(e) => setDate(e.target.value)}
-                  className="inputData"
-                />
-                <TextField
-                  type="text"
-                  value={selectGroup}
-                  id="outlined-username"
-                  variant="outlined"
-                  margin="normal"
-                  size="medium"
-                  fullWidth
-                  onChange={(e) => setCategory(e.target.value)}
-                  placeholder="Selecionar Grupo"
-                />
-                <Button
-                  onClick={handleClick}
->>>>>>> feature/pageGroup
                   style={{
                     backgroundColor: "var(--color-tertiary)",
                     border: "none",
@@ -266,30 +198,19 @@ const Groups = () => {
               <div>
                 <TextField
                   type="text"
-<<<<<<< HEAD
                   value={goalsTitle}
-=======
-                  value={title}
->>>>>>> feature/pageGroup
                   id="outlined-username"
                   variant="outlined"
                   margin="normal"
                   size="medium"
                   fullWidth
-<<<<<<< HEAD
                   onChange={(e) => setGoalsTitle(e.target.value)}
-=======
-                  onChange={(e) => setName(e.target.value)}
->>>>>>> feature/pageGroup
                   placeholder="Titulo"
                 />
                 <div>
                   <h5>Dificuldade</h5>
                   <Button
-<<<<<<< HEAD
                     onClick={() => setGoalsDifficulty("Fácil")}
-=======
->>>>>>> feature/pageGroup
                     style={{
                       width: "30%",
                       backgroundColor: "var(--gray-2)",
@@ -300,29 +221,19 @@ const Groups = () => {
                     Fácil
                   </Button>
                   <Button
-<<<<<<< HEAD
                     onClick={() => setGoalsDifficulty("Médio")}
-=======
->>>>>>> feature/pageGroup
                     style={{
                       width: "30%",
                       backgroundColor: "var(--gray-2)",
                       color: "var(--color-text)",
                       border: "none",
-<<<<<<< HEAD
                       margin: "2px 15px 0 ",
-=======
-                      margin: "0 15px",
->>>>>>> feature/pageGroup
                     }}
                   >
                     Médio
                   </Button>
                   <Button
-<<<<<<< HEAD
                     onClick={() => setGoalsDifficulty("Difícil")}
-=======
->>>>>>> feature/pageGroup
                     style={{
                       width: "30%",
                       backgroundColor: "var(--gray-2)",
@@ -333,7 +244,6 @@ const Groups = () => {
                     Difícil
                   </Button>
                 </div>
-<<<<<<< HEAD
                 <select
                   id="select"
                   onChange={(evt) => setAchieved(evt.target.value)}
@@ -351,32 +261,6 @@ const Groups = () => {
                 />
                 <Button
                   onClick={createGoals}
-=======
-                <TextField
-                  type="text"
-                  value={selectGroup}
-                  id="outlined-username"
-                  variant="outlined"
-                  margin="normal"
-                  size="medium"
-                  fullWidth
-                  onChange={(e) => setCategory(e.target.value)}
-                  placeholder="Evolução"
-                />
-                <TextField
-                  type="text"
-                  value={selectGroup}
-                  id="outlined-username"
-                  variant="outlined"
-                  margin="normal"
-                  size="medium"
-                  fullWidth
-                  onChange={(e) => setCategory(e.target.value)}
-                  placeholder="Selecionar grupo"
-                />
-                <Button
-                  onClick={handleClick}
->>>>>>> feature/pageGroup
                   style={{
                     backgroundColor: "var(--color-quaternary)",
                     border: "none",
@@ -389,7 +273,6 @@ const Groups = () => {
             </Modal>
           )}
         </div>
-<<<<<<< HEAD
         <div className="filterGroups">
           <Button
             onClick={() => setUpdatePage("update")}
@@ -422,8 +305,6 @@ const Groups = () => {
             <p>Meus Grupos</p>
           </Button>
         </div>
-=======
->>>>>>> feature/pageGroup
         <div>
           {groups.map((item, index) => (
             <Link
@@ -482,11 +363,7 @@ const Groups = () => {
                 placeholder="categoria"
               />
               <Button
-<<<<<<< HEAD
                 onClick={createGroup}
-=======
-                onClick={handleClick}
->>>>>>> feature/pageGroup
                 style={{
                   backgroundColor: "var(--color-secondary)",
                   border: "none",
@@ -498,15 +375,9 @@ const Groups = () => {
             </div>
           </Modal>
         )}
-<<<<<<< HEAD
         <AppBar selectedGroup={true} />
       </ContainerGroup>
     </section>
->>>>>>> feature/groups
-=======
-      </ContainerGroup>
-    </section>
->>>>>>> feature/pageGroup
   );
 };
 

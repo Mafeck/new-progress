@@ -15,6 +15,7 @@ import {
 import { useParams } from "react-router";
 import { Button } from "../../components/Button";
 import { toast } from "react-toastify";
+import AppBar from "../../components/AppBar";
 
 const Group = () => {
   const [subscriptions, setSubscriptions] = useState([]);
@@ -168,189 +169,192 @@ const Group = () => {
     setAtvId(id);
   };
   return (
-    <Container>
-      <Header />
-      <div className="header">
-        <div className="title">
-          <h1>{group.name}</h1>
-          <p>Descrição: {group.description}</p>
-          <p>Categoria: {group.category}</p>
-        </div>
-        <div className="buttonBox">
-          {subscriptions.some((item) => item.id == group.id) ? (
-            <>
-              <Button
-                onClick={() => setIsModalVisible(true)}
-                whiteSchema={true}
-              >
-                Editar
-              </Button>
-
-              <Button onClick={exitGroup}>Sair</Button>
-            </>
-          ) : (
-            <Button onClick={subscribeGroup}>Participar</Button>
-          )}
-        </div>
-      </div>
-      <div>
-        <ActivitiesTitle>
-          <h4>Atividades do grupo</h4>
-        </ActivitiesTitle>
-        <ActivitiesContent>
-          {activities.map((item) => {
-            return (
-              <div
-                onClick={() => {
-                  getEditAtvModal(true, item.id);
-                }}
-                key={item.id}
-              >
-                <p>{item.title}</p>
-              </div>
-            );
-          })}
-        </ActivitiesContent>
-      </div>
-      <div>
-        <GoalsTitle>
-          <h4>Metas do Grupo</h4>
-        </GoalsTitle>
-        <GoalsContent>
-          {goals.map((item) => {
-            return (
-              <div
-                onClick={() => {
-                  getEditGoalModal(true, item.id);
-                }}
-                key={item.id}
-              >
-                <p>{item.title}</p>
-              </div>
-            );
-          })}
-        </GoalsContent>
-        {isModalVisible && (
-          <Modal
-            onClose={() => setIsModalVisible(false)}
-            modalTitle={"Editar Grupo"}
-            className="group"
-          >
-            <div>
-              <TextField
-                type="text"
-                value={category}
-                id="outlined-username"
-                variant="outlined"
-                margin="normal"
-                size="medium"
-                fullWidth
-                onChange={(e) => setCategory(e.target.value)}
-                placeholder="Categoria"
-              />
-
-              <Button
-                onClick={updateGroup}
-                style={{
-                  backgroundColor: "var(--gray-2)",
-                  border: "none",
-                  marginTop: "20px",
-                  color: "var(--color-text)",
-                }}
-              >
-                Salvar
-              </Button>
-            </div>
-          </Modal>
-        )}
-        {isAtvModalVisible && (
-          <Modal
-            onClose={() => setIsAtvModalVisible(false)}
-            modalTitle={"Editar Atividade"}
-            className="atividade"
-          >
-            <div>
-              <TextField
-                type="text"
-                value={title}
-                id="outlined-username"
-                variant="outlined"
-                margin="normal"
-                size="medium"
-                fullWidth
-                placeholder="Título"
-                onChange={(e) => setTitle(e.target.value)}
-              />
-
-              <EditDivButton>
+    <>
+      <Container>
+        <Header />
+        <div className="header">
+          <div className="title">
+            <h1>{group.name}</h1>
+            <p>Descrição: {group.description}</p>
+            <p>Categoria: {group.category}</p>
+          </div>
+          <div className="buttonBox">
+            {subscriptions.some((item) => item.id == group.id) ? (
+              <>
                 <Button
-                  onClick={updateActivity}
+                  onClick={() => setIsModalVisible(true)}
+                  whiteSchema={true}
+                >
+                  Editar
+                </Button>
+
+                <Button onClick={exitGroup}>Sair</Button>
+              </>
+            ) : (
+              <Button onClick={subscribeGroup}>Participar</Button>
+            )}
+          </div>
+        </div>
+        <div>
+          <ActivitiesTitle>
+            <h4>Atividades do grupo</h4>
+          </ActivitiesTitle>
+          <ActivitiesContent>
+            {activities.map((item) => {
+              return (
+                <div
+                  onClick={() => {
+                    getEditAtvModal(true, item.id);
+                  }}
+                  key={item.id}
+                >
+                  <p>{item.title}</p>
+                </div>
+              );
+            })}
+          </ActivitiesContent>
+        </div>
+        <div>
+          <GoalsTitle>
+            <h4>Metas do Grupo</h4>
+          </GoalsTitle>
+          <GoalsContent>
+            {goals.map((item) => {
+              return (
+                <div
+                  onClick={() => {
+                    getEditGoalModal(true, item.id);
+                  }}
+                  key={item.id}
+                >
+                  <p>{item.title}</p>
+                </div>
+              );
+            })}
+          </GoalsContent>
+          {isModalVisible && (
+            <Modal
+              onClose={() => setIsModalVisible(false)}
+              modalTitle={"Editar Grupo"}
+              className="group"
+            >
+              <div>
+                <TextField
+                  type="text"
+                  value={category}
+                  id="outlined-username"
+                  variant="outlined"
+                  margin="normal"
+                  size="medium"
+                  fullWidth
+                  onChange={(e) => setCategory(e.target.value)}
+                  placeholder="Categoria"
+                />
+
+                <Button
+                  onClick={updateGroup}
                   style={{
                     backgroundColor: "var(--gray-2)",
                     border: "none",
                     marginTop: "20px",
                     color: "var(--color-text)",
-                    width: "42%",
                   }}
                 >
                   Salvar
                 </Button>
-                <Button
-                  onClick={deleteActivity}
-                  style={{
-                    backgroundColor: "var(--gray-2)",
-                    border: "none",
-                    marginTop: "20px",
-                    color: "var(--color-text)",
-                    width: "42%",
-                  }}
-                >
-                  Excluir
-                </Button>
-              </EditDivButton>
-            </div>
-          </Modal>
-        )}
-        {isGoalModalVisible && (
-          <Modal
-            onClose={() => setIsGoalModalVisible(false)}
-            modalTitle={"Editar Meta"}
-            className="meta"
-          >
-            <div>
-              <h3>A meta foi alcançada?</h3>
+              </div>
+            </Modal>
+          )}
+          {isAtvModalVisible && (
+            <Modal
+              onClose={() => setIsAtvModalVisible(false)}
+              modalTitle={"Editar Atividade"}
+              className="atividade"
+            >
+              <div>
+                <TextField
+                  type="text"
+                  value={title}
+                  id="outlined-username"
+                  variant="outlined"
+                  margin="normal"
+                  size="medium"
+                  fullWidth
+                  placeholder="Título"
+                  onChange={(e) => setTitle(e.target.value)}
+                />
 
-              <EditDivButton>
-                <Button
-                  onClick={updateGoals}
-                  style={{
-                    backgroundColor: "var(--gray-2)",
-                    border: "none",
-                    marginTop: "20px",
-                    color: "var(--color-text)",
-                    width: "42%",
-                  }}
-                >
-                  Concluir
-                </Button>
-                <Button
-                  onClick={deleteGoal}
-                  style={{
-                    backgroundColor: "var(--gray-2)",
-                    border: "none",
-                    marginTop: "20px",
-                    color: "var(--color-text)",
-                    width: "42%",
-                  }}
-                >
-                  Excluir
-                </Button>
-              </EditDivButton>
-            </div>
-          </Modal>
-        )}
-      </div>
-    </Container>
+                <EditDivButton>
+                  <Button
+                    onClick={updateActivity}
+                    style={{
+                      backgroundColor: "var(--gray-2)",
+                      border: "none",
+                      marginTop: "20px",
+                      color: "var(--color-text)",
+                      width: "42%",
+                    }}
+                  >
+                    Salvar
+                  </Button>
+                  <Button
+                    onClick={deleteActivity}
+                    style={{
+                      backgroundColor: "var(--gray-2)",
+                      border: "none",
+                      marginTop: "20px",
+                      color: "var(--color-text)",
+                      width: "42%",
+                    }}
+                  >
+                    Excluir
+                  </Button>
+                </EditDivButton>
+              </div>
+            </Modal>
+          )}
+          {isGoalModalVisible && (
+            <Modal
+              onClose={() => setIsGoalModalVisible(false)}
+              modalTitle={"Editar Meta"}
+              className="meta"
+            >
+              <div>
+                <h3>A meta foi alcançada?</h3>
+
+                <EditDivButton>
+                  <Button
+                    onClick={updateGoals}
+                    style={{
+                      backgroundColor: "var(--gray-2)",
+                      border: "none",
+                      marginTop: "20px",
+                      color: "var(--color-text)",
+                      width: "42%",
+                    }}
+                  >
+                    Concluir
+                  </Button>
+                  <Button
+                    onClick={deleteGoal}
+                    style={{
+                      backgroundColor: "var(--gray-2)",
+                      border: "none",
+                      marginTop: "20px",
+                      color: "var(--color-text)",
+                      width: "42%",
+                    }}
+                  >
+                    Excluir
+                  </Button>
+                </EditDivButton>
+              </div>
+            </Modal>
+          )}
+        </div>
+      </Container>
+      <AppBar />
+    </>
   );
 };
 

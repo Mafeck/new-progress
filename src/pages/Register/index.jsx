@@ -76,7 +76,7 @@ const Register = () => {
           <Input
             label={"Confirmar senha"}
             name="confirmPassword"
-            type="confirmPassword"
+            type="password"
             register={register}
             error={!!errors.confirmPassword}
             helperText={errors.confirmPassword?.message}
