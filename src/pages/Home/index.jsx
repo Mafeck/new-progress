@@ -11,7 +11,10 @@ const Home = () => {
 
   return (
     <Container>
-      <DivLogo />
+      <DivLogo>
+        <span>New</span>
+        <p>Progress</p>
+      </DivLogo>
       <DivImg />
       <div className="sectionRedirect">
         <Button whiteSchema={true} onClick={handleStarNow}>

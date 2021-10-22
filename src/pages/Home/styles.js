@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import img from "../../assets/undraw_Publish_post_re_wmql.svg";
-import logo from "../../assets/Group 53.png";
 
 export const Container = styled.div`
   width: 100vw;
@@ -39,17 +38,56 @@ export const Container = styled.div`
     width: 100%;
     height: 90px;
   }
+  @media (min-width: 426px) {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: center;
+
+    button {
+      width: 200px;
+    }
+  }
 `;
 
 export const DivLogo = styled.div`
-  background: url(${logo}) no-repeat;
-  background-size: contain;
   width: 160px;
   height: 50px;
   display: flex;
   justify-content: space-around;
   align-items: center;
   margin-top: 60px;
+  span {
+    color: var(--white);
+    background-color: var(--color-primary);
+    padding: 10px 5px 5px 5px;
+    width: 62.5px;
+    height: 50px;
+    font-size: 25px;
+    font-weight: 700;
+    border-radius: 5px;
+    text-align: center;
+  }
+  p {
+    color: black;
+    font-weight: 700;
+    font-size: 20px;
+  }
+
+  @media (min-width: 426px) {
+    width: 1600px;
+    justify-content: center;
+    margin-top: 0;
+    height: auto;
+
+    span {
+      width: 190px;
+      height: 110px;
+      font-size: 70px;
+    }
+    p {
+      font-size: 65px;
+    }
+  }
 `;
 
 export const DivImg = styled.div`
@@ -58,4 +96,8 @@ export const DivImg = styled.div`
   background-repeat: no-repeat;
   width: 90%;
   height: 36%;
+
+  @media (min-width: 426px) {
+    display: none;
+  }
 `;

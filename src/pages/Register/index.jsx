@@ -38,12 +38,13 @@ const Register = () => {
   return (
     <Container>
       <Paper
-        elevation={10}
+        elevation={3}
         style={{
           display: "flex",
           flexDirection: "column",
           width: "90vw",
           padding: "35px",
+          maxWidth: "500px",
         }}
       >
         <h2>Cadastro</h2>

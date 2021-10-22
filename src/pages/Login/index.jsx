@@ -43,12 +43,13 @@ const Login = () => {
   return (
     <Container>
       <Paper
-        elevation={10}
+        elevation={3}
         style={{
           display: "flex",
           flexDirection: "column",
           width: "90vw",
           padding: "35px",
+          maxWidth: "500px",
         }}
       >
         <h2>Login</h2>
