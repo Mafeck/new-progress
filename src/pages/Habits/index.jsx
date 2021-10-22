@@ -1,4 +1,10 @@
-import { Container, Modal, ChildModal, ChildModal2 } from "./styles";
+import {
+  Container,
+  Modal,
+  ChildModal,
+  ChildModal2,
+  MainContainer,
+} from "./style";
 import { AiOutlineClose } from "react-icons/ai";
 import { Button } from "../../components/Button/index";
 import Card from "../../components/Card/index";
@@ -127,103 +133,107 @@ const Habits = () => {
   }, [update]);
 
   return (
-    <Container>
-      <Header />
-      {createHabit && (
-        <Modal
-          id="Modal"
-          onClick={(evt) => evt.target.id === "Modal" && setCreatHabit(false)}
-        >
-          <ChildModal>
-            <header className="title">
-              <h3>Criar Hábito</h3>
-              <AiOutlineClose
-                className="close"
-                onClick={() => setCreatHabit(false)}
-              />
-            </header>
-            <main className="main">
-              <input
-                onChange={(evt) => setTitle(evt.target.value)}
-                placeholder="Título"
-                type="text"
-              />
-              <input
-                onChange={(evt) => setCategory(evt.target.value)}
-                placeholder="Categoria"
-                type="text"
-              />
-              <h5 className="subTitle">Dificuldade</h5>
-              <div className="divButton">
-                <button onClick={() => setDifficulty("fácil")}>Fácil</button>
-                <button onClick={() => setDifficulty("médio")}>Médio</button>
-                <button onClick={() => setDifficulty("difícil")}>
-                  Difícil
-                </button>
-              </div>
-              <h5 className="subTitle">Frequência</h5>
-              <div className="divButton">
-                <button onClick={() => setFrequency("diário")}>Diário</button>
-                <button onClick={() => setFrequency("semanal")}>Semanal</button>
-                <button onClick={() => setFrequency("mensal")}>Mensal</button>
-              </div>
-              <Button onClick={handleCreateHabit} whiteSchema={false}>
-                Criar
-              </Button>
-            </main>
-          </ChildModal>
-        </Modal>
-      )}
-      {habits &&
-        habits.map((value, index) => {
-          return (
-            <Card
-              onClick={handlePatchModal}
-              id={value.id}
-              key={index}
-              type={true}
-              title={value.title}
-              category={value.category}
-            >
-              <BsTrashFill color="#CCCCCC" />
-            </Card>
-          );
-        })}
-      {patchHabits && (
-        <Modal
-          id="Modal"
-          onClick={(evt) => {
-            evt.target.id === "Modal" && setPatchHabits(false);
-          }}
-        >
-          <ChildModal2>
-            <header className="title">
-              <h3>Detalhes do Hábito</h3>
-              <AiOutlineClose
-                className="close"
-                onClick={() => setPatchHabits(false)}
-              />
-            </header>
-            <main className="main">
-              <div className="divButton--2">
-                <select onChange={(evt) => setAchieved(evt.target.value)}>
-                  <option>20</option>
-                  <option>40</option>
-                  <option>60</option>
-                  <option>80</option>
-                  <option>100</option>
-                </select>
-                <button onClick={handleConcluded}>concluir</button>
-                <button onClick={deleteHabit}>excluir</button>
-              </div>
-              <Button onClick={handleSaveChanges}>Salvar alterações</Button>
-            </main>
-          </ChildModal2>
-        </Modal>
-      )}
-      <PlusButton onClick={handleCreateModal} className="plusButton" />
-      <AppBar selectedHabits={true} />
-    </Container>
+    <MainContainer>
+      <Container>
+        <Header />
+        {createHabit && (
+          <Modal
+            id="Modal"
+            onClick={(evt) => evt.target.id === "Modal" && setCreatHabit(false)}
+          >
+            <ChildModal>
+              <header className="title">
+                <h3>Criar Hábito</h3>
+                <AiOutlineClose
+                  className="close"
+                  onClick={() => setCreatHabit(false)}
+                />
+              </header>
+              <main className="main">
+                <input
+                  onChange={(evt) => setTitle(evt.target.value)}
+                  placeholder="Título"
+                  type="text"
+                />
+                <input
+                  onChange={(evt) => setCategory(evt.target.value)}
+                  placeholder="Categoria"
+                  type="text"
+                />
+                <h5 className="subTitle">Dificuldade</h5>
+                <div className="divButton">
+                  <button onClick={() => setDifficulty("fácil")}>Fácil</button>
+                  <button onClick={() => setDifficulty("médio")}>Médio</button>
+                  <button onClick={() => setDifficulty("difícil")}>
+                    Difícil
+                  </button>
+                </div>
+                <h5 className="subTitle">Frequência</h5>
+                <div className="divButton">
+                  <button onClick={() => setFrequency("diário")}>Diário</button>
+                  <button onClick={() => setFrequency("semanal")}>
+                    Semanal
+                  </button>
+                  <button onClick={() => setFrequency("mensal")}>Mensal</button>
+                </div>
+                <Button onClick={handleCreateHabit} whiteSchema={false}>
+                  Criar
+                </Button>
+              </main>
+            </ChildModal>
+          </Modal>
+        )}
+        {habits &&
+          habits.map((value, index) => {
+            return (
+              <Card
+                onClick={handlePatchModal}
+                id={value.id}
+                key={index}
+                type={true}
+                title={value.title}
+                category={value.category}
+              >
+                <BsTrashFill color="#CCCCCC" />
+              </Card>
+            );
+          })}
+        {patchHabits && (
+          <Modal
+            id="Modal"
+            onClick={(evt) => {
+              evt.target.id === "Modal" && setPatchHabits(false);
+            }}
+          >
+            <ChildModal2>
+              <header className="title">
+                <h3>Detalhes do Hábito</h3>
+                <AiOutlineClose
+                  className="close"
+                  onClick={() => setPatchHabits(false)}
+                />
+              </header>
+              <main className="main">
+                <div className="divButton--2">
+                  <select onChange={(evt) => setAchieved(evt.target.value)}>
+                    <option>20</option>
+                    <option>40</option>
+                    <option>60</option>
+                    <option>80</option>
+                    <option>100</option>
+                  </select>
+                  <button onClick={handleConcluded}>concluir</button>
+                  <button onClick={deleteHabit}>excluir</button>
+                </div>
+                <Button onClick={handleSaveChanges}>Salvar alterações</Button>
+              </main>
+            </ChildModal2>
+          </Modal>
+        )}
+        <PlusButton onClick={handleCreateModal} />
+      </Container>
+      <AppBar selectedHabits={true}></AppBar>
+    </MainContainer>
   );
 };
 

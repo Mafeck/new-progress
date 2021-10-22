@@ -19,6 +19,10 @@ export const Container = styled.div`
     background-size: contain;
     margin-left: 15px;
   }
+
+  @media (min-width: 768px) {
+    padding: 0 100px 0 100px;
+  }
 `;
 
 export const Perfil = styled.div`
@@ -157,5 +161,29 @@ export const Modal = styled.div`
     width: 100%;
     margin-top: 10px;
     border: none;
+  }
+`;
+
+export const DivLogo = styled.div`
+  width: 160px;
+  height: 50px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  span {
+    color: var(--white);
+    background-color: var(--color-primary);
+    padding: 10px 5px 5px 5px;
+    width: 62.5px;
+    height: 45px;
+    font-size: 20px;
+    font-weight: 700;
+    border-radius: 5px;
+    text-align: center;
+  }
+  p {
+    color: black;
+    font-weight: 700;
+    font-size: 18px;
   }
 `;

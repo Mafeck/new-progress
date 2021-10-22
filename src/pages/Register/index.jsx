@@ -1,5 +1,5 @@
 import { Paper } from "@material-ui/core";
-import { Container } from "./styles";
+import { Container } from "./style";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import api from "../../services/api";
@@ -81,9 +81,11 @@ const Register = () => {
             error={!!errors.confirmPassword}
             helperText={errors.confirmPassword?.message}
           />
-          <Button type="submit">Register</Button>
-          <Button whiteSchema={true} onClick={goBack}>
-            Back
+          <Button className="btnRegister" type="submit">
+            Registrar
+          </Button>
+          <Button className="btnBack" whiteSchema={true} onClick={goBack}>
+            Voltar
           </Button>
         </form>
       </Paper>

@@ -84,3 +84,20 @@ export const InputDate = styled.input`
   border: 1px solid var(--gray-1);
   padding: 10px;
 `;
+
+export const MainContainer = styled.div`
+  @media (min-width: 506px) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+`;
+
+export const ContainerGroups = styled.div`
+  @media (min-width: 425px) {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 1080px;
+    align-items: center;
+  }
+`;

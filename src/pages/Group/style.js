@@ -5,7 +5,7 @@ export const Container = styled.main`
 
   .header {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
     margin-bottom: 20px;
 
     .buttonBox {
@@ -38,8 +38,8 @@ export const Container = styled.main`
       line-height: 15px;
       letter-spacing: -0.017em;
       color: var(--color-text);
-      width: max-content;
-      max-width: 80%;
+      /* width: max-content; */
+      max-width: 100%;
     }
   }
   .group {

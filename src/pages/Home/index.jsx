@@ -1,4 +1,4 @@
-import { Container, DivLogo, DivImg } from "./styles";
+import { Container, DivLogo, DivImg } from "./style";
 import { Link, useHistory } from "react-router-dom";
 import { Button } from "../../components/Button/index";
 

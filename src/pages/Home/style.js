@@ -40,8 +40,9 @@ export const Container = styled.div`
   }
   @media (min-width: 426px) {
     flex-direction: row;
+    margin-top: 150px;
     flex-wrap: wrap;
-    align-content: center;
+    align-content: flex-start;
 
     button {
       width: 200px;
@@ -77,6 +78,7 @@ export const DivLogo = styled.div`
     width: 1600px;
     justify-content: center;
     margin-top: 0;
+    margin-bottom: 150px;
     height: auto;
 
     span {

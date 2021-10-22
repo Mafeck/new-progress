@@ -20,17 +20,16 @@ export const ButtonBox = styled.div`
 
   button {
     width: 100%;
+    margin: 15px 0 15px 0;
   }
 
   span {
-    font-weight: 500;
-    font-size: 12px;
-    line-height: 15px;
     font-style: normal;
     letter-spacing: -0.017em;
     color: var(--color-text);
     text-align: center;
-
-
+    color: #b2b2b2;
+    font-size: 12px;
+    font-weight: 700;
   }
 `;

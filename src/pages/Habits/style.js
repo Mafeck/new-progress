@@ -8,10 +8,13 @@ export const Container = styled.div`
   align-items: center;
   padding: 60px 0;
 
-  .plusButton {
-    position: fixed;
-    bottom: 80px;
-    right: 20px;
+  .modalCreateHabit {
+  }
+
+  @media (min-width: 426px) {
+    flex-direction: row;
+    flex-wrap: wrap;
+    max-width: 1080px;
   }
 `;
 
@@ -29,7 +32,7 @@ export const ModalEffect = keyframes`
 
 export const Modal = styled.div`
   background: rgba(0, 0, 0, 0.5);
-  width: 100vw;
+  width: 100%;
   height: 100vh;
   position: fixed;
   display: flex;
@@ -47,7 +50,11 @@ export const ChildModal = styled.div`
   flex-direction: column;
   align-items: center;
   border-radius: 5px;
-
+  @media (min-width: 426px) {
+    .main {
+      width: 600px;
+    }
+  }
   .main {
     width: 100%;
     display: flex;
@@ -133,7 +140,11 @@ export const ChildModal2 = styled.div`
   flex-direction: column;
   align-items: center;
   border-radius: 5px;
-
+  @media (min-width: 426px) {
+    .main {
+      width: 600px;
+    }
+  }
   .main {
     width: 100%;
     display: flex;
@@ -221,5 +232,13 @@ export const ChildModal2 = styled.div`
         color: var(--gray-1);
       }
     }
+  }
+`;
+
+export const MainContainer = styled.div`
+  @media (min-width: 506px) {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
   }
 `;

@@ -1,9 +1,13 @@
 import React from "react";
-import { Container, ContainerAppBar, ContainerImg } from "./styles";
+import { Container, ContainerAppBar, ContainerImg } from "./style";
 import { useHistory } from "react-router-dom";
 import { FaHeart, FaUserFriends } from "react-icons/fa";
 
-const AppBar = ({ selectedGroup = false, selectedHabits = false }) => {
+const AppBar = ({
+  children,
+  selectedGroup = false,
+  selectedHabits = false,
+}) => {
   const history = useHistory();
 
   return (

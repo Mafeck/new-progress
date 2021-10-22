@@ -57,7 +57,7 @@ const Group = () => {
         setGoals(res.data.goals);
       })
       .catch((err) => console.log(err));
-  }, []);
+  }, [group]);
 
   const subscribeGroup = () => {
     api

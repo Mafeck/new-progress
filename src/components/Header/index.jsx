@@ -10,6 +10,7 @@ import { Button } from "../../components/Button/index";
 
 import jwtDecode from "jwt-decode";
 import api from "../../services/api";
+import { DivLogo } from "./style";
 
 const Header = () => {
   const { user, setUser, token } = useContext(UserContext);
@@ -63,7 +64,10 @@ const Header = () => {
 
   return (
     <Container>
-      <div className="logo"></div>
+      <DivLogo>
+        <span>New</span>
+        <p>Progress</p>
+      </DivLogo>
       <Perfil>
         <h5>{user.username}</h5>
         <div className="perfil" onClick={handlePerfil}>

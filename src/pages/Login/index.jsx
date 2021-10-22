@@ -1,5 +1,5 @@
 import { Paper } from "@material-ui/core";
-import { ButtonBox, Container } from "./styles";
+import { ButtonBox, Container } from "./style";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import api from "../../services/api";
@@ -10,6 +10,7 @@ import { Input } from "../../components/Input";
 import { Box } from "@material-ui/system";
 import { useContext } from "react";
 import { UserContext } from "../../Providers/User";
+import { Link } from "react-router-dom";
 
 const Login = () => {
   const history = useHistory();
@@ -73,10 +74,9 @@ const Login = () => {
           />
           <ButtonBox>
             <Button type="submit">Entrar</Button>
-            <span>Não tem uma conta?</span>
-            <Button whiteSchema={true} onClick={() => handleClick()}>
-              Registrar
-            </Button>
+            <span>
+              Não tem uma conta? <Link to="/register">Registrar</Link>
+            </span>
           </ButtonBox>
         </Box>
       </Paper>

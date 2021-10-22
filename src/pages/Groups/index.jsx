@@ -13,7 +13,7 @@ import Modal from "../../components/Modal";
 import { Button } from "../../components/Button";
 import { TextField } from "@material-ui/core";
 import { toast } from "react-toastify";
-import { GroupItensButton } from "./style";
+import { GroupItensButton, MainContainer, ContainerGroups } from "./style";
 import AppBar from "../../components/AppBar";
 import Select from "react-select";
 import { GoalsContext } from "../../Providers/Goals";
@@ -133,7 +133,7 @@ const Groups = () => {
   });
 
   return (
-    <section>
+    <MainContainer>
       <Header />
       <ContainerGroup>
         <div className="groupButtons">
@@ -305,7 +305,7 @@ const Groups = () => {
             <p>Meus Grupos</p>
           </Button>
         </div>
-        <div>
+        <ContainerGroups>
           {groups.map((item, index) => (
             <Link
               to={(location) => ({
@@ -317,7 +317,7 @@ const Groups = () => {
               <Card type={false} title={item.name} category={item.category} />
             </Link>
           ))}
-        </div>
+        </ContainerGroups>
         <PlusButton
           greenSchema={true}
           onClick={() => setIsModalVisible(true)}
@@ -375,9 +375,9 @@ const Groups = () => {
             </div>
           </Modal>
         )}
-        <AppBar selectedGroup={true} />
       </ContainerGroup>
-    </section>
+      <AppBar selectedGroup={true} />
+    </MainContainer>
   );
 };
 

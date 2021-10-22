@@ -11,6 +11,14 @@ export const Container = styled.div`
   h2 {
     color: var(--darkBlue);
     margin-bottom: 28px;
+    text-align: center;
+  }
+
+  .btnRegister {
+    margin: 10px 0 0 0;
+  }
+  .btnBack {
+    margin: 15px 0 0 0;
   }
 `;
 
